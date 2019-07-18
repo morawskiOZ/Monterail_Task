@@ -1,0 +1,79 @@
+{
+  "about": [
+    {
+      "label": "title",
+      "name": "title",
+      "placeholder": "Make it short and clear",
+      "type": "text",
+      "required": true
+    },
+    {
+      "label": "description",
+      "name": "description",
+      "placeholder": "Write about your event, be creative",
+      "type": "textarea",
+      "required": true,
+      "description": "Max length 140 character",
+      "counter": true,
+      "maxLength": 140
+    },
+    {
+      "label": "category",
+      "name": "category_id",
+      "placeholder": "Select category (skills, interests, location",
+      "type": "select",
+      "options": [
+        {
+          "id": 0,
+          "name": "Cycling"
+        },
+        {
+          "id": 1,
+          "name": "Hiking"
+        },
+        {
+          "id": 2,
+          "name": "Cooking"
+        },
+        {
+          "id": 3,
+          "name": "Rock climbing"
+        },
+        {
+          "id": 4,
+          "name": "Yoga"
+        },
+        {
+          "id": 5,
+          "name": "Fencing"
+        },
+        {
+          "id": 6,
+          "name": "Swimming"
+        },
+        {
+          "id": 7,
+          "name": "Badminton"
+        },
+        {
+          "id": 8,
+          "name": "Running"
+        },
+        {
+          "id": 9,
+          "name": "Dance"
+        }
+      ]
+    },
+    {
+      "label": "payment",
+      "type": "paymentGroup",
+      "name": "paid_event",
+      "elements": [
+        { "type": "radio","name":"paid_event", "label": "Free event",  "value": false},
+        { "type": "radio","name":"paid_event", "label": "Paid event", "value": true }
+      ]
+    },
+    { "type": "number","name":"event_fee", "placeholder": "Fee", "description": "$" }
+  ]
+}
