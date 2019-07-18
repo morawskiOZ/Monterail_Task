@@ -1,7 +1,7 @@
 import React from "react"
+import { Form } from "react-final-form"
+import FormInput from "./FormInput/FormInput"
 import "./MainForm.scss"
-import { Form, Field } from "react-final-form"
-import FormInput from "./FormInput/FormInput";
 
 const MainForm = () => {
   const onSubmit = (values: any) => {
@@ -14,9 +14,27 @@ const MainForm = () => {
         onSubmit={onSubmit}
         render={({ handleSubmit, form, submitting, pristine, values }) => (
           <form onSubmit={handleSubmit}>
-            <FormInput label="title" key="title" name="title" placeholder="Make it short and clear" type="text"/>
-            <FormInput label="Statrs on" key="date" name="date" placeholder="dd/mm/yyyy" type="date"/>
-            <FormInput label="title" key="time" name="title" placeholder="Make it short and clear" type="text"/>
+            <FormInput
+              label="title"
+              key="title"
+              name="title"
+              placeholder="Make it short and clear"
+              type="text"
+            />
+            <FormInput
+              label="Statrs on"
+              key="date"
+              name="date"
+              placeholder="dd/mm/yyyy"
+              type="date"
+            />
+            <FormInput
+              label="title"
+              key="time"
+              name="title"
+              placeholder="Make it short and clear"
+              type="text"
+            />
             <div className="buttons">
               <button type="submit" disabled={submitting}>
                 Submit
