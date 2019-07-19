@@ -50,23 +50,27 @@ const FormInput = ({ ...props }: FormInputProps) => {
       parse={parseInput}
       type={elements ? elements.type : type}
     >
-      {({ input, meta }) => (
-        <div>
-          <label>{label}</label>
-          {assignElement(props, input)}
-          {meta.error && meta.touched && <span>{meta.error}</span>}
-          {description && (
-            <div className="FormInput-descriptionRow">
-              <span> {description} </span>
-              {counter && maxLength && (
-                <span>
-                  {input.value.length}/ {maxLength}
-                </span>
-              )}
-            </div>
-          )}
-        </div>
-      )}
+      {({ input, meta }) => {
+        const inputToRender = assignElement(props, input)
+
+        return (
+          <div>
+            <label>{label}</label>
+            {inputToRender}
+            {meta.error && meta.touched && <span>{meta.error}</span>}
+            {description && inputToRender && (
+              <div className="FormInput-descriptionRow">
+                <span> {description} </span>
+                {counter && maxLength && (
+                  <span>
+                    {input.value.length}/ {maxLength}
+                  </span>
+                )}
+              </div>
+            )}
+          </div>
+        )
+      }}
     </Field>
   )
 }
