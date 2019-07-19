@@ -1,9 +1,9 @@
+import { InputNames, InputTypes } from "helpers/components/MainForm/inputParser"
 import React from "react"
 import { Form } from "react-final-form"
-import FormInput, { InputTypes } from "./FormInput/FormInput"
-import "./MainForm.scss"
-import { InputNames } from "helpers/components/MainForm/assignValidator"
+import FormInput from "./FormInput/FormInput"
 import * as inputsSchema from "./FormSchema/inputsSchema.json"
+import "./MainForm.scss"
 
 const MainForm = () => {
   const onSubmit = (values: any) => {
@@ -28,6 +28,7 @@ const MainForm = () => {
                 maxLength={input.maxLength}
                 options={input.options}
                 elements={input.elements}
+                condition={input.condition}
                 values={values}
               />
             ))}

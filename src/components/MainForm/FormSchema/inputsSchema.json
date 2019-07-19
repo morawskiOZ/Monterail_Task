@@ -74,6 +74,6 @@
         { "type": "radio","name":"paid_event", "label": "Paid event", "value": true }
       ]
     },
-    { "type": "number","name":"event_fee", "placeholder": "Fee", "description": "$" }
+    { "type": "number","name":"event_fee", "placeholder": "Fee", "description": "$", "condition":"paid_event" }
   ]
 }
