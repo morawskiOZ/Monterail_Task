@@ -31,6 +31,18 @@ export const assignElement = (props, input) => {
           })}
         </select>
       )
+    case InputNames.COORDINATOR_ID:
+        return (
+          <select {...input}>
+            {options.map((option: SelectOption) => {
+              return (
+                <option value={option.id} id={`${option.id}`}>
+                  {option.name} {option.lastname}
+                </option>
+              )
+            })}
+          </select>
+        )
     case InputNames.PAID_EVENT:
       return elements.map(element => {
         return (

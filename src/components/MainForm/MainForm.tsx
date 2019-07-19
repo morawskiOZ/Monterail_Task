@@ -1,9 +1,9 @@
-import { InputNames, InputTypes } from "helpers/components/MainForm/inputParser"
-import React from "react"
-import { Form } from "react-final-form"
-import FormInput from "./FormInput/FormInput"
-import * as inputsSchema from "./FormSchema/inputsSchema.json"
-import "./MainForm.scss"
+import { InputNames, InputTypes } from "helpers/components/MainForm/inputParser";
+import React from "react";
+import { Form } from "react-final-form";
+import FormInput from "./FormInput/FormInput";
+import * as inputsSchema from "./FormSchema/inputsSchema.json";
+import "./MainForm.scss";
 
 const MainForm = () => {
   const onSubmit = (values: any) => {
@@ -29,6 +29,17 @@ const MainForm = () => {
                 options={input.options}
                 elements={input.elements}
                 condition={input.condition}
+                values={values}
+              />
+            ))}
+            {inputsSchema.coordinator.map(input => (
+              <FormInput
+                key={input.name}
+                name={input.name as InputNames}
+                type={input.type as InputTypes}
+                label={input.label}
+                placeholder={input.placeholder}
+                options={input.options}
                 values={values}
               />
             ))}

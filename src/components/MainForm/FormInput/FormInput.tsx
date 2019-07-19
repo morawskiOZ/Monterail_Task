@@ -13,20 +13,21 @@ import "./FormInput.scss"
 export interface SelectOption {
   id: number
   name: string
+  lastname?: string
 }
 
 export interface FormInputProps {
   name: InputNames
-  label: string
   type: InputTypes
-  placeholder: string
+  placeholder?: string
+  label?: string
   values?: any
   description?: string
   counter?: boolean
   maxLength?: number
   options?: SelectOption[]
   elements?: any
-  condition: any
+  condition?: any
 }
 
 const FormInput = ({ ...props }: FormInputProps) => {

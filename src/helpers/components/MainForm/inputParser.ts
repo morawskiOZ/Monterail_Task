@@ -3,7 +3,9 @@ export enum InputNames {
   EVENT_FEE = "event_fee",
   PAID_EVENT = "paid_event",
   DESCRIPTION = "description",
-  CATEGORY_ID = "category_id"
+  CATEGORY_ID = "category_id",
+  COORDINATOR_EMAIL = "coordinator.email",
+  COORDINATOR_ID = "coordinator.id"
 }
 export enum InputTypes {
   TEXT = "text",
