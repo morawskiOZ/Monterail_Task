@@ -160,6 +160,6 @@
     { "type": "email", "name": "coordinator.email", "label": "Email", "placeholder": "Email" }
   ],
   "when": [
-    {}
+    {"name": "date", "label": "Email", "placeholder": "Email"}
   ]
 }
