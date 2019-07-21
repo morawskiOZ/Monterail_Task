@@ -1,6 +1,9 @@
+import { InputNames, InputTypes } from "helpers/components/MainForm/inputParser"
 import React from "react"
-import { Form } from "react-final-form"
+import { Field, Form } from "react-final-form"
+import { DateComponent } from "./FormInput/DateComponent/DateComponent"
 import FormInput from "./FormInput/FormInput"
+import * as inputsSchema from "./FormSchema/inputsSchema.json"
 import "./MainForm.scss"
 
 const MainForm = () => {
@@ -14,27 +17,49 @@ const MainForm = () => {
         onSubmit={onSubmit}
         render={({ handleSubmit, form, submitting, pristine, values }) => (
           <form onSubmit={handleSubmit}>
-            <FormInput
-              label="title"
-              key="title"
-              name="title"
-              placeholder="Make it short and clear"
-              type="text"
-            />
-            <FormInput
-              label="Statrs on"
-              key="date"
+            {inputsSchema.about.map(input => (
+              <FormInput
+                key={input.name}
+                name={input.name as InputNames}
+                label={input.label}
+                type={input.type as InputTypes}
+                placeholder={input.placeholder}
+                description={input.description}
+                counter={input.counter}
+                maxLength={input.maxLength}
+                options={input.options}
+                elements={input.elements}
+                condition={input.condition}
+                values={values}
+              />
+            ))}
+            {inputsSchema.coordinator.map(input => (
+              <FormInput
+                key={input.name}
+                name={input.name as InputNames}
+                type={input.type as InputTypes}
+                label={input.label}
+                placeholder={input.placeholder}
+                options={input.options}
+                values={values}
+              />
+            ))}
+            <Field
               name="date"
-              placeholder="dd/mm/yyyy"
-              type="date"
+              label="Starts on "
+              component={DateComponent}
             />
-            <FormInput
-              label="title"
-              key="time"
-              name="title"
-              placeholder="Make it short and clear"
-              type="text"
-            />
+            {inputsSchema.when.map(input => (
+              <FormInput
+                key={input.name}
+                name={input.name as InputNames}
+                type={input.type as InputTypes}
+                label={input.label}
+                placeholder={input.placeholder}
+                values={values}
+                description={input.description}
+              />
+            ))}
             <div className="buttons">
               <button type="submit" disabled={submitting}>
                 Submit

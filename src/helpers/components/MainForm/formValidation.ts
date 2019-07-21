@@ -9,8 +9,8 @@ export const minValue = min => value =>
 export const composeValidators = (...validators) => value =>
   validators.reduce((error, validator) => error || validator(value), undefined)
 
-export const checkLength = (currentLength: number, AllowedLength: number) => {
-  currentLength < AllowedLength
+export const checkLength = (AllowedLength: number) => value => {
+  return value.length < AllowedLength
     ? undefined
     : `Description cannot be longer than ${AllowedLength} characters`
 }
@@ -19,5 +19,5 @@ export const validateEmail = (email: string) => {
   // RFC2822 email validator
   const reg = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
   const test = reg.test(email)
-  test ? undefined : "E-mail is not in a valid format"
+  return test ? undefined : "E-mail is not in a valid format"
 }
