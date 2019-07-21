@@ -46,7 +46,7 @@ const MainForm = () => {
             ))}
             <Field
               name="date"
-              label="This does not render any input component (and is very silly, but does the trick 😅)"
+              label="Starts on "
               component={DateComponent}
             />
             {inputsSchema.when.map(input => (

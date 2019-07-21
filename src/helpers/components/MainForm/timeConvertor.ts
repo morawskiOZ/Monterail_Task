@@ -3,7 +3,7 @@ import { TimeFormat } from "components/MainForm/FormInput/DateComponent/DateComp
 export const timeConvertor = (time: string, format: TimeFormat) => {
   const [hours, minutes] = time.split(":")
 
-  if (format == TimeFormat.AM) {
+  if (format === TimeFormat.AM) {
     if (parseFloat(hours) === 12) {
       return `00:${minutes}`
     } else {

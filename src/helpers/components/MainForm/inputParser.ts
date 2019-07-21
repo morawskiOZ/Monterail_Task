@@ -11,9 +11,11 @@ export enum InputNames {
 export enum InputTypes {
   TEXT = "text",
   TEXT_AREA = "textarea",
-  SELECT = "select",
-  PAYMENT_GROUP = "paymentGroup",
-  CONDITIONAL = "conditional"
+  RADIO = "radio",
+  NUMBER = "number",
+  EMAIL = "email",
+  DATE = "date"
+
 }
 
 export const parseInput = (value: any, name: InputNames | string) => {

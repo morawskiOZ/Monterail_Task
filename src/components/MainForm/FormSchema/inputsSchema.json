@@ -11,7 +11,6 @@
       "label": "description",
       "name": "description",
       "placeholder": "Write about your event, be creative",
-      "type": "textarea",
       "required": true,
       "description": "Max length 140 character",
       "counter": true,
@@ -21,7 +20,6 @@
       "label": "category",
       "name": "category_id",
       "placeholder": "Select category (skills, interests, location",
-      "type": "select",
       "options": [
         {
           "id": 0,
@@ -67,7 +65,6 @@
     },
     {
       "label": "payment",
-      "type": "paymentGroup",
       "name": "paid_event",
       "elements": [
         {
@@ -100,7 +97,6 @@
   ],
   "coordinator": [
     {
-      "type": "select",
       "name": "coordinator.id",
       "placeholder": "Email",
       "label": "responsible",

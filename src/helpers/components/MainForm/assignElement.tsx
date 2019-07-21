@@ -24,7 +24,7 @@ export const assignElement = (props, input) => {
         <select {...input} placeholder={placeholder}>
           {options.map((option: SelectOption) => {
             return (
-              <option value={option.id} id={`${option.id}`}>
+              <option value={option.id} key={option.id} id={`${option.id}`}>
                 {option.name}
               </option>
             )
@@ -36,7 +36,7 @@ export const assignElement = (props, input) => {
         <select {...input}>
           {options.map((option: SelectOption) => {
             return (
-              <option value={option.id} id={`${option.id}`}>
+              <option value={option.id} key={option.id} id={`${option.id}`}>
                 {option.name} {option.lastname}
               </option>
             )
@@ -52,6 +52,7 @@ export const assignElement = (props, input) => {
             name={element.name}
             label={element.label}
             value={element.value}
+            key={element.label}
           />
         )
       })

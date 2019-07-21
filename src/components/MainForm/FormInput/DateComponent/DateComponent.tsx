@@ -1,5 +1,5 @@
 import { timeConvertor } from "helpers/components/MainForm/timeConvertor"
-import React, { useState } from "react"
+import React, { useState, ReactElement } from "react"
 import "./DateComponent.scss"
 import TimeInput from "./TimeInput/TimeInput"
 
@@ -10,11 +10,12 @@ export enum TimeFormat {
 
 export const DateComponent = ({
   input,
-  meta: { active, error, touched }
-}: any) => {
-  const [day, setDay] = useState<any>("")
-  const [time, setTime] = useState<any>("")
-  const [format, setFormat] = useState<any>(TimeFormat.AM)
+  meta: { active, error, touched },
+  label
+}: any): ReactElement => {
+  const [day, setDay] = useState<string>("")
+  const [time, setTime] = useState<string>("")
+  const [format, setFormat] = useState<TimeFormat>(TimeFormat.AM)
 
   const handleDateChange = event => {
     setDay(event.target.value)
@@ -32,7 +33,7 @@ export const DateComponent = ({
 
   return (
     <div tabIndex={0} className={""}>
-      <label>Label</label>
+      <label>{label}</label>
       <input
         type="date"
         onChange={handleDateChange}
@@ -40,7 +41,7 @@ export const DateComponent = ({
         className="DateComponent-dateInput"
       />
       <span>at</span>
-      <TimeInput onTimeChange={handleTimeChange} />
+      <TimeInput onTimeChange={handleTimeChange} placeholder={"--:--"}/>
       <input
         type="radio"
         name="format"
