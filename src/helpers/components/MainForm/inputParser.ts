@@ -10,7 +10,6 @@ export enum InputNames {
 }
 export enum InputTypes {
   TEXT = "text",
-  TEXT_AREA = "textarea",
   RADIO = "radio",
   NUMBER = "number",
   EMAIL = "email",

@@ -3,6 +3,8 @@ import React, { useState, ReactElement } from "react"
 import "./DateComponent.scss"
 import TimeInput from "./TimeInput/TimeInput"
 
+// TODO: add types everywhere
+
 export enum TimeFormat {
   AM = "AM",
   PM = "PM"
