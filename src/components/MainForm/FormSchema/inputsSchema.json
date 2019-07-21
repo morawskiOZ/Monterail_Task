@@ -157,9 +157,20 @@
         }
       ]
     },
-    { "type": "email", "name": "coordinator.email", "label": "Email", "placeholder": "Email" }
+    {
+      "type": "email",
+      "name": "coordinator.email",
+      "label": "Email",
+      "placeholder": "Email"
+    }
   ],
   "when": [
-    {"name": "date", "label": "Email", "placeholder": "Email"}
+    {
+      "type": "text",
+      "name": "duration",
+      "label": "duration",
+      "placeholder": "Number",
+      "description": "hour"
+    }
   ]
 }

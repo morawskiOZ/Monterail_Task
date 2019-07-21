@@ -32,17 +32,17 @@ export const assignElement = (props, input) => {
         </select>
       )
     case InputNames.COORDINATOR_ID:
-        return (
-          <select {...input}>
-            {options.map((option: SelectOption) => {
-              return (
-                <option value={option.id} id={`${option.id}`}>
-                  {option.name} {option.lastname}
-                </option>
-              )
-            })}
-          </select>
-        )
+      return (
+        <select {...input}>
+          {options.map((option: SelectOption) => {
+            return (
+              <option value={option.id} id={`${option.id}`}>
+                {option.name} {option.lastname}
+              </option>
+            )
+          })}
+        </select>
+      )
     case InputNames.PAID_EVENT:
       return elements.map(element => {
         return (
@@ -55,6 +55,17 @@ export const assignElement = (props, input) => {
           />
         )
       })
+    case InputNames.DURATION:
+      return (
+        <input
+          {...input}
+          type={type}
+          name={name}
+          label={label}
+          value={input.value ? input.value / 60 : input.value}
+          placeholder={placeholder}
+        />
+      )
     case InputNames.EVENT_FEE:
       if (values[condition]) {
         return <input {...input} type={type} placeholder={placeholder} />

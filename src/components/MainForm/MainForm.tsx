@@ -1,10 +1,10 @@
-import { InputNames, InputTypes } from "helpers/components/MainForm/inputParser";
-import React from "react";
-import { Form, Field } from "react-final-form";
-import FormInput from "./FormInput/FormInput";
-import * as inputsSchema from "./FormSchema/inputsSchema.json";
-import "./MainForm.scss";
-import { DateComponent } from "./FormInput/DateComponent/DateComponent";
+import { InputNames, InputTypes } from "helpers/components/MainForm/inputParser"
+import React from "react"
+import { Field, Form } from "react-final-form"
+import { DateComponent } from "./FormInput/DateComponent/DateComponent"
+import FormInput from "./FormInput/FormInput"
+import * as inputsSchema from "./FormSchema/inputsSchema.json"
+import "./MainForm.scss"
 
 const MainForm = () => {
   const onSubmit = (values: any) => {
@@ -44,11 +44,22 @@ const MainForm = () => {
                 values={values}
               />
             ))}
-              <Field
-            name="date"
-            label="This does not render any input component (and is very silly, but does the trick 😅)"
-            component={DateComponent}
-          />
+            <Field
+              name="date"
+              label="This does not render any input component (and is very silly, but does the trick 😅)"
+              component={DateComponent}
+            />
+            {inputsSchema.when.map(input => (
+              <FormInput
+                key={input.name}
+                name={input.name as InputNames}
+                type={input.type as InputTypes}
+                label={input.label}
+                placeholder={input.placeholder}
+                values={values}
+                description={input.description}
+              />
+            ))}
             <div className="buttons">
               <button type="submit" disabled={submitting}>
                 Submit
