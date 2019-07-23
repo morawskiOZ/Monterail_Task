@@ -1,12 +1,12 @@
-import { InputNames, InputTypes } from "helpers/components/MainForm/inputParser"
 import React from "react"
 import { Field, Form } from "react-final-form"
 import { DateComponent } from "./FormInput/DateComponent/DateComponent"
 import FormInput from "./FormInput/FormInput"
-import * as inputsSchema from "./FormSchema/inputsSchema.json"
+import * as inputsSchema from "../../data/FormSchema/inputsSchema.json"
 import "./MainForm.scss"
 import { composeValidators } from "helpers/components/MainForm/formValidation";
 import { assignValidators } from "helpers/components/MainForm/assignValidator";
+import { InputNames, InputTypes } from "ts/FormInput/FormInput_enum";
 
 const MainForm = () => {
   const onSubmit = (values: any) => {
@@ -50,7 +50,7 @@ const MainForm = () => {
               name={InputNames.DATE}
               label="Starts on "
               component={DateComponent}
-              validate={composeValidators(...assignValidators(InputNames.DATE))}
+              validate={composeValidators(...assignValidators(InputNames.DATE, values))}
             />
             {inputsSchema.when.map(input => (
               <FormInput

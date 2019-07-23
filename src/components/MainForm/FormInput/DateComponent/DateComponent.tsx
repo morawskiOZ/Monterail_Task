@@ -10,32 +10,33 @@ export enum TimeFormat {
   PM = "PM"
 }
 
+export const transformDate = (date: string): Date => new Date(date+ ":00Z")
+
 export const DateComponent = ({
   input,
   meta: { active, error, touched },
   label
 }: any): ReactElement => {
-  console.log(error)
-  console.log(touched)
-  console.log(input)
-
 
   const [day, setDay] = useState<string>("")
   const [time, setTime] = useState<string>("")
   const [format, setFormat] = useState<TimeFormat>(TimeFormat.AM)
 
+
   const handleDateChange = event => {
     setDay(event.target.value)
-    input.onChange(`${event.target.value}T${time}`)
+    const date = `${event.target.value}T${time}`
+    time && input.onChange(date)
   }
   const handleTimeChange = value => {
-    setTime(timeConvertor(value, format))
-    input.onChange("someValue")
+    setTime(value)
+    const date = `${day}T${timeConvertor(value, format)}`
+    day && input.onChange(date)
+
   }
   const handleFormatChange = event => {
-    setFormat(event.target.value)
-
-    input.onChange("someValue")
+    setFormat(event.target.value);
+    (day && time)  && input.onChange(`${day}T${timeConvertor(time, event.target.value)}`)
   }
 
   return (
