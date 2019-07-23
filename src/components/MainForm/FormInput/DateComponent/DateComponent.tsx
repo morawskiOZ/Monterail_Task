@@ -10,6 +10,8 @@ export enum TimeFormat {
   PM = "PM"
 }
 
+export const transformDate = (date: string): Date => new Date(date + ":00Z")
+
 export const DateComponent = ({
   input,
   meta: { active, error, touched },
@@ -19,39 +21,54 @@ export const DateComponent = ({
   const [time, setTime] = useState<string>("")
   const [format, setFormat] = useState<TimeFormat>(TimeFormat.AM)
 
-  const handleDateChange = event => {
-    setDay(event.target.value)
-    input.onChange(`${event.target.value}T${time}`)
+  const handleDateChange = ({target: {value}}) => {
+    setDay(value)
+    if (time) {
+      const date = `${value}T${timeConvertor(time, format)}`
+      input.onChange(date)
+    }
   }
   const handleTimeChange = value => {
-    setTime(timeConvertor(value, format))
-    input.onChange("someValue")
+    setTime(value)
+    if (day) {
+      const date = `${day}T${timeConvertor(value, format)}`
+      input.onChange(date)
+    }
   }
-  const handleFormatChange = event => {
-    setFormat(event.target.value)
-
-    input.onChange("someValue")
+  const handleFormatChange = ({target: {value}}) => {
+    setFormat(value)
+    if (day && time) {
+      input.onChange(`${day}T${timeConvertor(time, value)}`)
+    }
   }
 
   return (
     <div tabIndex={0} className={""}>
       <label>{label}</label>
       <input
+        {...input}
         type="date"
         onChange={handleDateChange}
         value={day}
         className="DateComponent-dateInput"
       />
       <span>at</span>
-      <TimeInput onTimeChange={handleTimeChange} placeholder={"--:--"}/>
+      <TimeInput
+        onTimeChange={handleTimeChange}
+        placeholder={"--:--"}
+        input={input}
+      />
       <input
+        {...input}
         type="radio"
         name="format"
         value={TimeFormat.AM}
         checked={format === TimeFormat.AM}
         onChange={handleFormatChange}
+        required
       />
       <input
+        {...input}
         type="radio"
         name="format"
         value={TimeFormat.PM}

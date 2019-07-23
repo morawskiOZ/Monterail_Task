@@ -1,13 +1,10 @@
 import { assignElement } from "helpers/components/MainForm/assignElement"
 import { assignValidators } from "helpers/components/MainForm/assignValidator"
 import { composeValidators } from "helpers/components/MainForm/formValidation"
-import {
-  InputNames,
-  InputTypes,
-  parseInput
-} from "helpers/components/MainForm/inputParser"
+import { parseInput } from "helpers/components/MainForm/inputParser"
 import React from "react"
 import { Field } from "react-final-form"
+import { InputNames, InputTypes } from "ts/FormInput/FormInput_enum"
 import "./FormInput.scss"
 
 export interface SelectOption {
@@ -44,36 +41,40 @@ const FormInput = ({ ...props }: FormInputProps) => {
     elements,
     condition
   } = props
-  return (
-    <Field
-      name={name}
-      validate={composeValidators(...assignValidators(name))}
-      parse={parseInput}
-      type={elements ? elements.type : type}
-    >
-      {({ input, meta }) => {
-        const inputToRender = assignElement(props, input)
+  if (condition && !values[condition]) {
+    return null
+  } else {
+    return (
+      <Field
+        name={name}
+        validate={composeValidators(...assignValidators(name, values))}
+        parse={parseInput}
+        type={type}
+      >
+        {({ input, meta }) => {
+          const inputToRender = assignElement(props, input)
 
-        return (
-          <div>
-            <label>{label}</label>
-            {inputToRender}
-            {meta.error && meta.touched && <span>{meta.error}</span>}
-            {description && inputToRender && (
-              <div className="FormInput-descriptionRow">
-                <span> {description} </span>
-                {counter && maxLength && (
-                  <span>
-                    {input.value.length}/ {maxLength}
-                  </span>
-                )}
-              </div>
-            )}
-          </div>
-        )
-      }}
-    </Field>
-  )
+          return (
+            <div>
+              <label>{label}</label>
+              {inputToRender}
+              {meta.error && meta.touched && <span>{meta.error}</span>}
+              {description && inputToRender && (
+                <div className="FormInput-descriptionRow">
+                  <span> {description} </span>
+                  {counter && maxLength && (
+                    <span>
+                      {input.value.length}/ {maxLength}
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
+          )
+        }}
+      </Field>
+    )
+  }
 }
 
 export default FormInput

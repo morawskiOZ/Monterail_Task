@@ -1,6 +1,6 @@
 import React from "react"
 import { SelectOption } from "components/MainForm/FormInput/FormInput"
-import { InputNames } from "./inputParser"
+import { InputNames } from "ts/FormInput/FormInput_enum";
 
 export const assignElement = (props, input) => {
   const {
@@ -53,6 +53,7 @@ export const assignElement = (props, input) => {
             label={element.label}
             value={element.value}
             key={element.label}
+            checked={element.value === values.paid_event}
           />
         )
       })
@@ -71,7 +72,7 @@ export const assignElement = (props, input) => {
       if (values[condition]) {
         return <input {...input} type={type} placeholder={placeholder} />
       }
-      break
+      return
     default:
       return <input {...input} type={type} placeholder={placeholder} />
   }

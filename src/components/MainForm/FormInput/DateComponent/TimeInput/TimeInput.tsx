@@ -7,6 +7,7 @@ import React, { Component } from "react"
 class TimeInput extends Component<any, any> {
   _input: any
   lastVal: string
+  input: any
 
   constructor(props: any) {
     super(props)
@@ -131,6 +132,7 @@ class TimeInput extends Component<any, any> {
   render() {
     return (
       <input
+        {...this.props.input}
         name={this.props.name ? this.props.name : undefined}
         className={this.props.className}
         type={this.getType()}
