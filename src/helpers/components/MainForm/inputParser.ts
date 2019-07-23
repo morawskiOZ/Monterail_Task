@@ -6,7 +6,8 @@ export enum InputNames {
   CATEGORY_ID = "category_id",
   COORDINATOR_EMAIL = "coordinator.email",
   COORDINATOR_ID = "coordinator.id",
-  DURATION = "duration"
+  DURATION = "duration",
+  DATE = "date"
 }
 export enum InputTypes {
   TEXT = "text",

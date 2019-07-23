@@ -15,6 +15,11 @@ export const DateComponent = ({
   meta: { active, error, touched },
   label
 }: any): ReactElement => {
+  console.log(error)
+  console.log(touched)
+  console.log(input)
+
+
   const [day, setDay] = useState<string>("")
   const [time, setTime] = useState<string>("")
   const [format, setFormat] = useState<TimeFormat>(TimeFormat.AM)
@@ -37,21 +42,25 @@ export const DateComponent = ({
     <div tabIndex={0} className={""}>
       <label>{label}</label>
       <input
+        {...input}
         type="date"
         onChange={handleDateChange}
         value={day}
         className="DateComponent-dateInput"
       />
       <span>at</span>
-      <TimeInput onTimeChange={handleTimeChange} placeholder={"--:--"}/>
+      <TimeInput onTimeChange={handleTimeChange} placeholder={"--:--"} input={input} />
       <input
+        {...input}
         type="radio"
         name="format"
         value={TimeFormat.AM}
         checked={format === TimeFormat.AM}
         onChange={handleFormatChange}
+        required
       />
       <input
+        {...input}
         type="radio"
         name="format"
         value={TimeFormat.PM}

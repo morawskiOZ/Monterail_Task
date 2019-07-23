@@ -5,6 +5,8 @@ import { DateComponent } from "./FormInput/DateComponent/DateComponent"
 import FormInput from "./FormInput/FormInput"
 import * as inputsSchema from "./FormSchema/inputsSchema.json"
 import "./MainForm.scss"
+import { composeValidators } from "helpers/components/MainForm/formValidation";
+import { assignValidators } from "helpers/components/MainForm/assignValidator";
 
 const MainForm = () => {
   const onSubmit = (values: any) => {
@@ -45,9 +47,10 @@ const MainForm = () => {
               />
             ))}
             <Field
-              name="date"
+              name={InputNames.DATE}
               label="Starts on "
               component={DateComponent}
+              validate={composeValidators(...assignValidators(InputNames.DATE))}
             />
             {inputsSchema.when.map(input => (
               <FormInput

@@ -66,6 +66,7 @@
     {
       "label": "payment",
       "name": "paid_event",
+      "type": "radio",
       "elements": [
         {
           "type": "radio",
@@ -100,6 +101,7 @@
       "name": "coordinator.id",
       "placeholder": "Email",
       "label": "responsible",
+      "required": true,
       "options": [
         {
           "id": 0,

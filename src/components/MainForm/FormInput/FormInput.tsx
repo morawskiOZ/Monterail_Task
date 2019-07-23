@@ -49,7 +49,7 @@ const FormInput = ({ ...props }: FormInputProps) => {
       name={name}
       validate={composeValidators(...assignValidators(name))}
       parse={parseInput}
-      type={elements ? elements.type : type}
+      type={type}
     >
       {({ input, meta }) => {
         const inputToRender = assignElement(props, input)
