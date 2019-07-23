@@ -1,7 +1,7 @@
 import React from "react"
 import "./App.scss"
 import MainForm from "../MainForm/MainForm"
-import Header from "components/Header/Header";
+import Header from "components/Header/Header"
 
 const App: React.FC = () => {
   return (
