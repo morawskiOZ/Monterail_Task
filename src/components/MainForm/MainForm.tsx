@@ -8,13 +8,15 @@ import { composeValidators } from "helpers/components/MainForm/formValidation";
 import { assignValidators } from "helpers/components/MainForm/assignValidator";
 import { InputNames, InputTypes } from "ts/FormInput/FormInput_enum";
 
+
+// TODO: maybe add content styling to APP max width and color to body
 const MainForm = () => {
   const onSubmit = (values: any) => {
     console.log(values)
   }
 
   return (
-    <div>
+    <div className="MainForm">
       <Form
         onSubmit={onSubmit}
         render={({ handleSubmit, form, submitting, pristine, values }) => (
