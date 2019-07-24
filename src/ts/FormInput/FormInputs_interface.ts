@@ -18,4 +18,5 @@ export interface FormInputProps {
   options?: SelectOption[]
   elements?: any
   condition?: any
+  required?: boolean
 }

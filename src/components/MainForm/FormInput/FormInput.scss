@@ -2,13 +2,13 @@
 
 .FormInput {
   display: grid;
-  grid-template-columns: 3fr 10fr 4fr;
+  grid-template-columns: 2fr 9fr 5fr;
   grid-gap: 8px;
   &-label {
     text-transform: uppercase;
     display: grid;
     align-content: center;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: $weak_blue;
 
   }

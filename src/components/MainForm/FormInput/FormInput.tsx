@@ -19,7 +19,8 @@ const FormInput = ({ ...props }: FormInputProps) => {
     maxLength,
     options,
     elements,
-    condition
+    condition,
+    required
   } = props
   if (condition && !values[condition]) {
     return null

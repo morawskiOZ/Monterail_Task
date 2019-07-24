@@ -39,6 +39,7 @@ const MainForm = () => {
                   elements={input.elements}
                   condition={input.condition}
                   values={values}
+                  required={input.required}
                 />
               ))}
             </FormBlock>
