@@ -1,0 +1,45 @@
+@import "../../../style/variables";
+
+.FormInput {
+  display: grid;
+  grid-template-columns: 3fr 10fr 4fr;
+  grid-gap: 8px;
+  &-label {
+    text-transform: uppercase;
+    display: grid;
+    align-content: center;
+    font-size: 0.9rem;
+    color: $weak_blue;
+
+  }
+  &--firstRow {
+    grid-column: 1;
+  }
+  &--secondRow {
+    grid-column: 2;
+  }
+  &--thirdRow {
+    grid-column: 3;
+  }
+  &-descriptionRow {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    color: $placeholder_color;
+    font-size: 0.7rem;
+
+  }
+  &-input {
+    height: 41px;
+    width: 100%;
+    border: 2px solid $main_border_color;
+    border-radius: 3px;
+    padding: 5px 10px 5px 10px;
+    font-size: 0.9rem;
+    &::placeholder {
+      color: $placeholder_color;
+    padding: 5px 10px 5px 10px;
+
+    }
+  }
+}

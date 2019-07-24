@@ -1,10 +1,11 @@
 .MainForm {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1000px;
   // background-color: #F7F7F7;
   &-form {
     display: grid;
     grid-gap: 15px;
     margin-top: 25px;
   }
+  
 }

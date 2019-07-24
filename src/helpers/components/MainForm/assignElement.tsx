@@ -1,6 +1,7 @@
 import React from "react"
-import { SelectOption } from "components/MainForm/FormInput/FormInput"
 import { InputNames } from "ts/FormInput/FormInput_enum";
+import { SelectOption } from "ts/FormInput/FormInputs_interface";
+import { assignClassName } from "./assignClassName";
 
 export const assignElement = (props, input) => {
   const {
@@ -18,10 +19,10 @@ export const assignElement = (props, input) => {
   } = props
   switch (name) {
     case InputNames.DESCRIPTION:
-      return <textarea {...input} placeholder={placeholder} />
+      return <textarea {...input} placeholder={placeholder} className={assignClassName(name)}/>
     case InputNames.CATEGORY_ID:
       return (
-        <select {...input} placeholder={placeholder}>
+        <select {...input} placeholder={placeholder} className={assignClassName(name)}>
           {options.map((option: SelectOption) => {
             return (
               <option value={option.id} key={option.id} id={`${option.id}`}>
@@ -33,7 +34,7 @@ export const assignElement = (props, input) => {
       )
     case InputNames.COORDINATOR_ID:
       return (
-        <select {...input}>
+        <select {...input} className={assignClassName(name)}>
           {options.map((option: SelectOption) => {
             return (
               <option value={option.id} key={option.id} id={`${option.id}`}>
@@ -54,6 +55,7 @@ export const assignElement = (props, input) => {
             value={element.value}
             key={element.label}
             checked={element.value === values.paid_event}
+            className={assignClassName(name)}
           />
         )
       })
@@ -66,14 +68,15 @@ export const assignElement = (props, input) => {
           label={label}
           value={input.value ? input.value / 60 : input.value}
           placeholder={placeholder}
+          className={assignClassName(name)}
         />
       )
     case InputNames.EVENT_FEE:
       if (values[condition]) {
-        return <input {...input} type={type} placeholder={placeholder} />
+        return <input {...input} type={type} placeholder={placeholder} className={assignClassName(name)}/>
       }
       return
     default:
-      return <input {...input} type={type} placeholder={placeholder} />
+      return <input {...input} type={type} placeholder={placeholder} className={assignClassName(name)}/>
   }
 }

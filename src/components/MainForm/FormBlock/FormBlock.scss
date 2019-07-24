@@ -1,8 +1,10 @@
 @import "../../../style/variables";
 
 .FormBlock {
-  padding: 15px;
+  padding: 15px 45px 15px 45px;
   background-color: $form_background_color;
+  display: grid;
+  grid-gap: 15px;
   &-title {
     color: $main_blue
   }

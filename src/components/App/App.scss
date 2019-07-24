@@ -1,8 +1,10 @@
 @import "../../style/variables";
+@import "../../style/reset";
 
 // TODO: add fonts
 
 .App {
+  box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
   background-color: $main_background_color;
 }

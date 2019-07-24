@@ -4,28 +4,8 @@ import { composeValidators } from "helpers/components/MainForm/formValidation"
 import { parseInput } from "helpers/components/MainForm/inputParser"
 import React from "react"
 import { Field } from "react-final-form"
-import { InputNames, InputTypes } from "ts/FormInput/FormInput_enum"
+import { FormInputProps } from "ts/FormInput/FormInputs_interface"
 import "./FormInput.scss"
-
-export interface SelectOption {
-  id: number
-  name: string
-  lastname?: string
-}
-
-export interface FormInputProps {
-  name: InputNames
-  type: InputTypes
-  placeholder?: string
-  label?: string
-  values?: any
-  description?: string
-  counter?: boolean
-  maxLength?: number
-  options?: SelectOption[]
-  elements?: any
-  condition?: any
-}
 
 const FormInput = ({ ...props }: FormInputProps) => {
   const {
@@ -55,20 +35,24 @@ const FormInput = ({ ...props }: FormInputProps) => {
           const inputToRender = assignElement(props, input)
 
           return (
-            <div>
-              <label>{label}</label>
-              {inputToRender}
-              {meta.error && meta.touched && <span>{meta.error}</span>}
-              {description && inputToRender && (
-                <div className="FormInput-descriptionRow">
-                  <span> {description} </span>
-                  {counter && maxLength && (
-                    <span>
-                      {input.value.length}/ {maxLength}
-                    </span>
-                  )}
-                </div>
-              )}
+            <div className="FormInput">
+              <label className="FormInput--firstRow FormInput-label">{label}</label>
+              <div className="FormInput--secondRow">
+                {inputToRender}
+                {description && inputToRender && (
+                  <div className="FormInput-descriptionRow">
+                    <span> {description} </span>
+                    {counter && maxLength && (
+                      <span>
+                        {input.value.length}/ {maxLength}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </div>
+              <div className="FormInput--thirdRow">
+                {meta.error && meta.touched && <span>{meta.error}</span>}
+              </div>
             </div>
           )
         }}
