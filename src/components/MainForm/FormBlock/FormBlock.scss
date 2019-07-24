@@ -1,0 +1,12 @@
+@import "../../../style/variables";
+
+.FormBlock {
+  padding: 15px;
+  background-color: $form_background_color;
+  &-title {
+    color: $main_blue
+  }
+  &-line {
+
+  }
+}
