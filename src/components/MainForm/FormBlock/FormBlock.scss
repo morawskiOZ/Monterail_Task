@@ -6,7 +6,9 @@
   display: grid;
   grid-gap: 15px;
   &-title {
-    color: $main_blue
+    color: $main_blue;
+    font-size: 1.6rem;
+    letter-spacing: 0.05rem;
   }
   &-line {
 

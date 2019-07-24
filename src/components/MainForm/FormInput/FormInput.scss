@@ -4,12 +4,20 @@
   display: grid;
   grid-template-columns: 2fr 9fr 5fr;
   grid-gap: 8px;
+  &--required {
+    color: $required_color;
+  }
   &-label {
     text-transform: uppercase;
     display: grid;
     align-content: center;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: $weak_blue;
+    grid-auto-flow: column;
+    justify-content: left;
+    font-weight:500; 
+    letter-spacing: -0.01rem;
+
 
   }
   &--firstRow {
@@ -27,7 +35,6 @@
     justify-content: space-between;
     color: $placeholder_color;
     font-size: 0.7rem;
-
   }
   &-input {
     height: 41px;
@@ -38,8 +45,7 @@
     font-size: 0.9rem;
     &::placeholder {
       color: $placeholder_color;
-    padding: 5px 10px 5px 10px;
-
+      padding: 5px 10px 5px 10px;
     }
   }
 }

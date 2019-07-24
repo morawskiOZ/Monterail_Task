@@ -37,7 +37,7 @@ const FormInput = ({ ...props }: FormInputProps) => {
 
           return (
             <div className="FormInput">
-              <label className="FormInput--firstRow FormInput-label">{label}</label>
+              <label className="FormInput--firstRow FormInput-label">{label}{required ? <span className="FormInput--required" >&nbsp;*</ span> : ""}</label>
               <div className="FormInput--secondRow">
                 {inputToRender}
                 {description && inputToRender && (
