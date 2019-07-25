@@ -9,7 +9,7 @@ import FormBlock from "./FormBlock/FormBlock"
 import { DateComponent } from "./FormInput/DateComponent/DateComponent"
 import FormInput from "./FormInput/FormInput"
 import "./MainForm.scss"
-import { FormValues } from "ts/Form/Form_interfaces.js";
+import { FormValues } from "ts/Form/Form_interfaces.js"
 
 // TODO: maybe add content styling to APP max width and color to body
 const MainForm = () => {
@@ -44,7 +44,7 @@ const MainForm = () => {
                   maxLength={input.maxLength}
                   options={input.options}
                   elements={input.elements}
-                  values={values as FormValues} 
+                  values={values as FormValues}
                   required={input.required}
                   multiElement={input.multiElement}
                   information={input.information}
@@ -53,38 +53,41 @@ const MainForm = () => {
                 />
               ))}
             </FormBlock>
-
-            {inputsSchema.coordinator.map(input => (
-              <FormInput
-                key={input.name}
-                name={input.name as InputNames}
-                type={input.type as InputTypes}
-                label={input.label}
-                placeholder={input.placeholder}
-                options={input.options}
-                values={values as FormValues} 
+            <FormBlock title={"Coordinator"}>
+              {inputsSchema.coordinator.map(input => (
+                <FormInput
+                  key={input.name}
+                  name={input.name as InputNames}
+                  type={input.type as InputTypes}
+                  label={input.label}
+                  placeholder={input.placeholder}
+                  options={input.options}
+                  values={values as FormValues}
+                />
+              ))}
+            </FormBlock>
+            <FormBlock title={"When"}>
+              <Field
+                name={InputNames.DATE}
+                label="Starts on "
+                component={DateComponent}
+                validate={composeValidators(
+                  ...assignValidators(InputNames.DATE, values)
+                )}
               />
-            ))}
-            <Field
-              name={InputNames.DATE}
-              label="Starts on "
-              component={DateComponent}
-              validate={composeValidators(
-                ...assignValidators(InputNames.DATE, values)
-              )}
-            />
-            {inputsSchema.when.map(input => (
-              <FormInput
-                key={input.name}
-                name={input.name as InputNames}
-                type={input.type as InputTypes}
-                label={input.label}
-                placeholder={input.placeholder}
-                values={values as FormValues} 
-                multiElement={input.multiElement}
-                information={input.information}
-              />
-            ))}
+              {inputsSchema.when.map(input => (
+                <FormInput
+                  key={input.name}
+                  name={input.name as InputNames}
+                  type={input.type as InputTypes}
+                  label={input.label}
+                  placeholder={input.placeholder}
+                  values={values as FormValues}
+                  multiElement={input.multiElement}
+                  information={input.information}
+                />
+              ))}
+            </FormBlock>
             <div className="buttons">
               <button type="submit" disabled={submitting}>
                 Submit
