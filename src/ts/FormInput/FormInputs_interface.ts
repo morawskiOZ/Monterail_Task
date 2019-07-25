@@ -21,4 +21,6 @@ export interface FormInputProps {
   required?: boolean
   multiElement?: boolean
   information?: string
+  multiFields?: any[]
+  form?: any
 }

@@ -85,15 +85,16 @@
           "information": "Paid event",
           "value": true
         }
-        
+      ],
+      "multiFields": [
+        {
+          "type": "number",
+          "name": "event_fee",
+          "placeholder": "Fee",
+          "information": "$",
+          "condition": "paid_event"
+        }
       ]
-    },
-    {
-      "type": "number",
-      "name": "event_fee",
-      "placeholder": "Fee",
-      "information": "$",
-      "condition": "paid_event"
     },
     {
       "type": "number",

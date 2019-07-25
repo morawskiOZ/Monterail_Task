@@ -1,26 +1,32 @@
+import { assignValidators } from "helpers/components/MainForm/assignValidator"
+import { composeValidators } from "helpers/components/MainForm/formValidation"
+import { omitNill } from "helpers/components/MainForm/modifyValue"
 import React from "react"
 import { Field, Form } from "react-final-form"
+import { InputNames, InputTypes } from "ts/FormInput/FormInput_enum"
+import * as inputsSchema from "../../data/FormSchema/inputs.json"
+import FormBlock from "./FormBlock/FormBlock"
 import { DateComponent } from "./FormInput/DateComponent/DateComponent"
 import FormInput from "./FormInput/FormInput"
-import * as inputsSchema from "../../data/FormSchema/inputs.json"
 import "./MainForm.scss"
-import { composeValidators } from "helpers/components/MainForm/formValidation"
-import { assignValidators } from "helpers/components/MainForm/assignValidator"
-import { InputNames, InputTypes } from "ts/FormInput/FormInput_enum"
-import FormBlock from "./FormBlock/FormBlock"
 
 // TODO: maybe add content styling to APP max width and color to body
 const MainForm = () => {
   const onSubmit = (values: any) => {
-    console.log(values)
+    const valuesOmitNil = omitNill(values)
+    console.log(valuesOmitNil)
   }
 
   return (
-// TODO: maybe the div is redundant
+    // TODO: maybe the div is redundant
 
     <div className="MainForm">
       <Form
-      
+        mutators={{
+          resetFee: (args, state, utils) => {
+            utils.changeValue(state, InputNames.EVENT_FEE, () => "")
+          }
+        }}
         onSubmit={onSubmit}
         render={({ handleSubmit, form, submitting, pristine, values }) => (
           <form onSubmit={handleSubmit} className="MainForm-form">
@@ -37,11 +43,12 @@ const MainForm = () => {
                   maxLength={input.maxLength}
                   options={input.options}
                   elements={input.elements}
-                  condition={input.condition}
                   values={values}
                   required={input.required}
                   multiElement={input.multiElement}
                   information={input.information}
+                  multiFields={input.multiFields}
+                  form={form}
                 />
               ))}
             </FormBlock>

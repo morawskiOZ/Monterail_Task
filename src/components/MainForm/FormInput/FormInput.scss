@@ -1,5 +1,5 @@
 @import "../../../style/variables";
-
+$input_height: 41px;
 .FormInput {
   display: grid;
   grid-template-columns: 2fr 8fr 2fr;
@@ -31,9 +31,6 @@
   &--thirdColumn {
     grid-column: 3;
   }
-  &--gridFee {
-    grid-area: fee
-  }
   &-descriptionRow {
     display: grid;
     grid-template-columns: auto auto;
@@ -43,7 +40,7 @@
     font-style: italic;
   }
   &-input {
-    height: 41px;
+    height: $input_height;
     width: 100%;
     border: 2px solid $main_border_color;
     border-radius: 3px;
@@ -92,10 +89,12 @@
     }
   }
   &-multiElementRow {
+    height: $input_height;
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: max-content;
     grid-gap: 4px;
+    align-items: center;
 
   }
   &-description {

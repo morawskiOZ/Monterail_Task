@@ -1,13 +1,14 @@
 import { assignElement } from "helpers/components/MainForm/assignElement"
 import { assignValidators } from "helpers/components/MainForm/assignValidator"
 import { composeValidators } from "helpers/components/MainForm/formValidation"
+import { generateExtraFields } from "helpers/components/MainForm/generateEkstraFields"
 import { parseInput } from "helpers/components/MainForm/inputParser"
-import React from "react"
+import React, { ReactElement } from "react"
 import { Field } from "react-final-form"
 import { FormInputProps } from "ts/FormInput/FormInputs_interface"
 import "./FormInput.scss"
 
-const FormInput = ({ ...props }: FormInputProps) => {
+const FormInput = ({ ...props }: FormInputProps): ReactElement => {
   const {
     name,
     label,
@@ -22,8 +23,11 @@ const FormInput = ({ ...props }: FormInputProps) => {
     condition,
     required,
     multiElement,
-    information
+    information,
+    multiFields,
+    form
   } = props
+
   if (condition && !values[condition]) {
     return null
   } else {
@@ -36,20 +40,26 @@ const FormInput = ({ ...props }: FormInputProps) => {
       >
         {({ input, meta }) => {
           const inputToRender = assignElement(props, input, values)
+          const extraFields = multiFields
+            ? generateExtraFields(multiFields, values, form)
+            : []
 
           return (
             <div className="FormInput">
-              <label className="FormInput--column FormInput--firstColumn FormInput-label">
-                {label}
-                {required && (
-                  <span className="FormInput--required">&nbsp;*</span>
-                )}
-              </label>
+              {label && (
+                <label className="FormInput--column FormInput--firstColumn FormInput-label">
+                  {label}
+                  {required && (
+                    <span className="FormInput--required">&nbsp;*</span>
+                  )}
+                </label>
+              )}
               <div className="FormInput--column FormInput--secondColumn">
                 <div
                   className={multiElement ? "FormInput-multiElementRow" : ""}
                 >
                   {inputToRender}
+                  {multiElement && multiFields && extraFields}
                 </div>
 
                 {description && inputToRender && (
@@ -63,9 +73,11 @@ const FormInput = ({ ...props }: FormInputProps) => {
                   </div>
                 )}
               </div>
-              <div className=" FormInput--column FormInput--thirdColumn">
-                {meta.error && meta.touched && <span>{meta.error}</span>}
-              </div>
+              {meta.error && meta.touched && (
+                <div className=" FormInput--column FormInput--thirdColumn">
+                  <span>{meta.error}</span>
+                </div>
+              )}
             </div>
           )
         }}
