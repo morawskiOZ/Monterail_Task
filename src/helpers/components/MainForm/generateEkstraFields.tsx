@@ -5,10 +5,11 @@ import { assignElement } from "./assignElement"
 import { assignValidators } from "./assignValidator"
 import { composeValidators } from "./formValidation"
 import { parseInput } from "./inputParser"
+import { FormValues } from "ts/Form/Form_interfaces";
 
 export const generateExtraFields = (
   multiFields: FormInputProps[],
-  values?,
+  values?: FormValues,
   form?
 ): any => {
   const a = multiFields.map(fieldProps => {

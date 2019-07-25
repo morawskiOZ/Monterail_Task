@@ -9,10 +9,11 @@ import FormBlock from "./FormBlock/FormBlock"
 import { DateComponent } from "./FormInput/DateComponent/DateComponent"
 import FormInput from "./FormInput/FormInput"
 import "./MainForm.scss"
+import { FormValues } from "ts/Form/Form_interfaces.js";
 
 // TODO: maybe add content styling to APP max width and color to body
 const MainForm = () => {
-  const onSubmit = (values: any) => {
+  const onSubmit = (values: FormValues) => {
     const valuesOmitNil = omitNill(values)
     console.log(valuesOmitNil)
   }
@@ -43,7 +44,7 @@ const MainForm = () => {
                   maxLength={input.maxLength}
                   options={input.options}
                   elements={input.elements}
-                  values={values}
+                  values={values as FormValues} 
                   required={input.required}
                   multiElement={input.multiElement}
                   information={input.information}
@@ -61,7 +62,7 @@ const MainForm = () => {
                 label={input.label}
                 placeholder={input.placeholder}
                 options={input.options}
-                values={values}
+                values={values as FormValues} 
               />
             ))}
             <Field
@@ -79,7 +80,7 @@ const MainForm = () => {
                 type={input.type as InputTypes}
                 label={input.label}
                 placeholder={input.placeholder}
-                values={values}
+                values={values as FormValues} 
                 multiElement={input.multiElement}
                 information={input.information}
               />
