@@ -111,6 +111,7 @@
       "placeholder": "Email",
       "label": "responsible",
       "required": true,
+      "defaultValue": 3,
       "options": [
         {
           "id": 0,

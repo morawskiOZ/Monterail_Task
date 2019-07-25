@@ -25,7 +25,8 @@ const FormInput = ({ ...props }: FormInputProps): ReactElement => {
     multiElement,
     information,
     multiFields,
-    form
+    form,
+    defaultValue
   } = props
 
   if (condition && !values[condition]) {
@@ -37,6 +38,7 @@ const FormInput = ({ ...props }: FormInputProps): ReactElement => {
         validate={composeValidators(...assignValidators(name, values))}
         parse={parseInput}
         type={type}
+        defaultValue={defaultValue}
       >
         {({ input, meta }) => {
           const inputToRender = assignElement(props, input, values)

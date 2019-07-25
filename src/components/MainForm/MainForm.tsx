@@ -63,6 +63,7 @@ const MainForm = () => {
                   placeholder={input.placeholder}
                   options={input.options}
                   values={values as FormValues}
+                  defaultValue={input.defaultValue}
                 />
               ))}
             </FormBlock>

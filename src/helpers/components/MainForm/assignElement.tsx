@@ -50,8 +50,23 @@ export const assignElement = (props, input, values?) => {
         </select>
       )
     case InputNames.COORDINATOR_ID:
+      const separateLoggedInUser = (options: SelectOption[], id: number): [SelectOption, SelectOption[]] => {
+        const user = options.find(option => option.id === id)
+        const restEntries = options.filter(option => option.id !== id)
+        return [user, restEntries]
+      }
+      const [userOption, restOption] = separateLoggedInUser(options, 3)
       return (
         <select {...input} className={className}>
+          <option value="" disabled>
+            Me
+          </option>
+          <option value={userOption.id} key={userOption.id} id={`${userOption.id}`}> 
+                {userOption.name} {userOption.lastname}
+              </option>
+          <option value="" disabled>
+            Others
+          </option>
           {options.map((option: SelectOption) => {
             return (
               <option value={option.id} key={option.id} id={`${option.id}`}>
@@ -97,7 +112,9 @@ export const assignElement = (props, input, values?) => {
             className={className}
           />
           {information && (
-            <span className="FormInput-description FormInput-description--bigGap">{information}</span>
+            <span className="FormInput-description FormInput-description--bigGap">
+              {information}
+            </span>
           )}
         </>
       )

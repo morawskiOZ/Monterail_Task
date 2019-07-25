@@ -1,4 +1,8 @@
 import { InputNames } from "ts/FormInput/FormInput_enum"
+import {
+  translateNameToState,
+  getStateFromTranslatedName
+} from "./translateName"
 
 export const assignClassName = (name: InputNames, values?: any): string => {
   const defaultClassName = "FormInput-input"
@@ -9,9 +13,15 @@ export const assignClassName = (name: InputNames, values?: any): string => {
       break
     case InputNames.CATEGORY_ID:
     case InputNames.COORDINATOR_ID:
+      const translatedName = translateNameToState(name)
+      const valueFromTranslatedName = getStateFromTranslatedName(
+        translatedName,
+        values
+      )
+
       classNames.push(defaultClassName + "--select")
-      
-      if (values && !values[name]) {
+
+      if (values && !valueFromTranslatedName) {
         classNames.push(defaultClassName + "--placeholder")
       }
       break
