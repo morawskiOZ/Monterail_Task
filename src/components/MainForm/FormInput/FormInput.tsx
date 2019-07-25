@@ -21,7 +21,8 @@ const FormInput = ({ ...props }: FormInputProps) => {
     elements,
     condition,
     required,
-    multiElement
+    multiElement,
+    information
   } = props
   if (condition && !values[condition]) {
     return null
@@ -46,7 +47,7 @@ const FormInput = ({ ...props }: FormInputProps) => {
               </label>
               <div className="FormInput--column FormInput--secondColumn">
                 <div
-                  className={multiElement ? "FormInput--multiElementRow" : ""}
+                  className={multiElement ? "FormInput-multiElementRow" : ""}
                 >
                   {inputToRender}
                 </div>

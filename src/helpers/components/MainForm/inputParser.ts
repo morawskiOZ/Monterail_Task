@@ -8,7 +8,7 @@ export const parseInput = (value: any, name: InputNames | string) => {
     case InputNames.PAID_EVENT:
       return value === "true"
     case InputNames.DURATION:
-      return parseFloat(value) * 60
+      return parseFloat(value) * 60 * 60
     default:
       return value
   }

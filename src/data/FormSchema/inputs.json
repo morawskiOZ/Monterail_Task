@@ -85,20 +85,23 @@
           "information": "Paid event",
           "value": true
         }
+        
       ]
     },
     {
       "type": "number",
       "name": "event_fee",
       "placeholder": "Fee",
-      "description": "$",
+      "information": "$",
       "condition": "paid_event"
     },
     {
       "type": "number",
       "name": "reward",
       "placeholder": "Number",
-      "description": "reward points for attendance"
+      "information": "reward points for attendance",
+      "label": "reward",
+      "multiElement": true
     }
   ],
   "coordinator": [
@@ -173,7 +176,8 @@
       "name": "duration",
       "label": "duration",
       "placeholder": "Number",
-      "description": "hour"
+      "information": "hour",
+      "multiElement": true
     }
   ]
 }

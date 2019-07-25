@@ -1,7 +1,8 @@
 import React from "react"
-import { InputNames } from "ts/FormInput/FormInput_enum";
-import { SelectOption } from "ts/FormInput/FormInputs_interface";
-import { assignClassName } from "./assignClassName";
+import { SelectOption } from "ts/FormInput/FormInputs_interface"
+import { InputNames } from "ts/FormInput/FormInput_enum"
+import { assignClassName } from "./assignClassName"
+import { modifyValue } from "./modifyValue"
 
 export const assignElement = (props, input, values?) => {
   const {
@@ -15,18 +16,30 @@ export const assignElement = (props, input, values?) => {
     options,
     elements,
     condition,
-    multiElement
+    multiElement,
+    information
   } = props
   const className = assignClassName(name, values)
   switch (name) {
-    // TODO: Assign element by their type not name to make it more re-usable and generic
+    // TODO: Assign element by their specific type(not input type) not name to make it more re-usable and generic
     case InputNames.DESCRIPTION:
       // TODO: understand why function assignClassName in className had undefined for values
-      return <textarea {...input} placeholder={placeholder} className={className}/>
+      return (
+        <textarea {...input} placeholder={placeholder} className={className} />
+      )
     case InputNames.CATEGORY_ID:
       return (
-        <select {...input} placeholder={placeholder} className={className} value={values[name] || ""}>
-          {placeholder && <option value="" hidden>{placeholder}</option>}    
+        <select
+          {...input}
+          placeholder={placeholder}
+          className={className}
+          value={values[name] || ""}
+        >
+          {placeholder && (
+            <option value="" hidden>
+              {placeholder}
+            </option>
+          )}
           {options.map((option: SelectOption) => {
             return (
               <option value={option.id} key={option.id} id={`${option.id}`}>
@@ -50,38 +63,64 @@ export const assignElement = (props, input, values?) => {
       )
     case InputNames.PAID_EVENT:
       return elements.map(element => {
-        return (<>
-              <input
-            {...input}
-            type={element.type}
-            name={element.name}
-            value={element.value}
-            key={element.label}
-            checked={element.value === values[name]}
-            className={className}
-          />
-          {element.information && <span className="FormInput--description"> {element.information}</span>}
-        </>
+        return (
+          <>
+            <input
+              {...input}
+              type={element.type}
+              name={element.name}
+              value={element.value}
+              key={element.label}
+              checked={element.value === values[name]}
+              className={className}
+            />
+            {element.information && (
+              <span className="FormInput-description">
+                {element.information}
+              </span>
+            )}
+          </>
         )
       })
     case InputNames.DURATION:
+    case InputNames.REWARD:
+      return (
+        <>
+          <input
+            {...input}
+            type={type}
+            name={name}
+            label={label}
+            // condition to avoid showing 0 instead of placeholder
+            value={input.value ? modifyValue(name, input.value) : input.value}
+            placeholder={placeholder}
+            className={className}
+          />
+          {information && (
+            <span className="FormInput-description FormInput-description--bigGap">{information}</span>
+          )}
+        </>
+      )
+    case InputNames.EVENT_FEE:
+      if (values[condition]) {
+        return (
+          <input
+            {...input}
+            type={type}
+            placeholder={placeholder}
+            className={className}
+          />
+        )
+      }
+      return
+    default:
       return (
         <input
           {...input}
           type={type}
-          name={name}
-          label={label}
-          value={input.value ? input.value / 60 : input.value}
           placeholder={placeholder}
           className={className}
         />
       )
-    case InputNames.EVENT_FEE:
-      if (values[condition]) {
-        return <input {...input} type={type} placeholder={placeholder} className={className}/>
-      }
-      return
-    default:
-      return <input {...input} type={type} placeholder={placeholder} className={className}/>
   }
 }

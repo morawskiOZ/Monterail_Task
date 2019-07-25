@@ -2,7 +2,7 @@ import React from "react"
 import { Field, Form } from "react-final-form"
 import { DateComponent } from "./FormInput/DateComponent/DateComponent"
 import FormInput from "./FormInput/FormInput"
-import * as inputsSchema from "../../data/FormSchema/inputsSchema.json"
+import * as inputsSchema from "../../data/FormSchema/inputs.json"
 import "./MainForm.scss"
 import { composeValidators } from "helpers/components/MainForm/formValidation"
 import { assignValidators } from "helpers/components/MainForm/assignValidator"
@@ -41,6 +41,7 @@ const MainForm = () => {
                   values={values}
                   required={input.required}
                   multiElement={input.multiElement}
+                  information={input.information}
                 />
               ))}
             </FormBlock>
@@ -72,7 +73,8 @@ const MainForm = () => {
                 label={input.label}
                 placeholder={input.placeholder}
                 values={values}
-                description={input.description}
+                multiElement={input.multiElement}
+                information={input.information}
               />
             ))}
             <div className="buttons">

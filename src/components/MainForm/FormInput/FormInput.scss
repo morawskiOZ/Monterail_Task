@@ -31,6 +31,9 @@
   &--thirdColumn {
     grid-column: 3;
   }
+  &--gridFee {
+    grid-area: fee
+  }
   &-descriptionRow {
     display: grid;
     grid-template-columns: auto auto;
@@ -64,7 +67,7 @@
         color: placeholder_color;
         text-shadow: none;
         outline: none;
-    }
+      }
       color: black;
       background-color: #fff;
       & option {
@@ -83,15 +86,24 @@
       height: 20px;
       width: 40px;
     }
+    &--small {
+      padding: 5px;
+      width: 100px;
+    }
   }
-  &--multiElementRow {
+  &-multiElementRow {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: max-content;
+    grid-gap: 4px;
+
   }
-  &--description{
+  &-description {
     font-size: 0.8rem;
     align-items: center;
     display: grid;
+    &--bigGap {
+      margin-left: 10px;
+    }
   }
 }
