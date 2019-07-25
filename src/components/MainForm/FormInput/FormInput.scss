@@ -87,6 +87,10 @@ $input_height: 41px;
       padding: 5px;
       width: 100px;
     }
+    &--verySmall {
+      padding: 5px;
+      width: 65px;
+    }
   }
   &-multiElementRow {
     height: $input_height;
