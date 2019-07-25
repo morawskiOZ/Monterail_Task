@@ -20,7 +20,8 @@ const FormInput = ({ ...props }: FormInputProps) => {
     options,
     elements,
     condition,
-    required
+    required,
+    multiElement
   } = props
   if (condition && !values[condition]) {
     return null
@@ -33,13 +34,23 @@ const FormInput = ({ ...props }: FormInputProps) => {
         type={type}
       >
         {({ input, meta }) => {
-          const inputToRender = assignElement(props, input)
+          const inputToRender = assignElement(props, input, values)
 
           return (
             <div className="FormInput">
-              <label className="FormInput--firstRow FormInput-label">{label}{required ? <span className="FormInput--required" >&nbsp;*</ span> : ""}</label>
-              <div className="FormInput--secondRow">
-                {inputToRender}
+              <label className="FormInput--column FormInput--firstColumn FormInput-label">
+                {label}
+                {required && (
+                  <span className="FormInput--required">&nbsp;*</span>
+                )}
+              </label>
+              <div className="FormInput--column FormInput--secondColumn">
+                <div
+                  className={multiElement ? "FormInput--multiElementRow" : ""}
+                >
+                  {inputToRender}
+                </div>
+
                 {description && inputToRender && (
                   <div className="FormInput-descriptionRow">
                     <span> {description} </span>
@@ -51,7 +62,7 @@ const FormInput = ({ ...props }: FormInputProps) => {
                   </div>
                 )}
               </div>
-              <div className="FormInput--thirdRow">
+              <div className=" FormInput--column FormInput--thirdColumn">
                 {meta.error && meta.touched && <span>{meta.error}</span>}
               </div>
             </div>

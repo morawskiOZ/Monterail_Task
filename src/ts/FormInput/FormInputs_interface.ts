@@ -19,4 +19,5 @@ export interface FormInputProps {
   elements?: any
   condition?: any
   required?: boolean
+  multiElement?: boolean
 }

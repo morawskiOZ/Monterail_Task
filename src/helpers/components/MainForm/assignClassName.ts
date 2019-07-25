@@ -1,6 +1,6 @@
 import { InputNames } from "ts/FormInput/FormInput_enum"
 
-export const assignClassName = (name: InputNames): string => {
+export const assignClassName = (name: InputNames, values?: any): string => {
   const defaultClassName = "FormInput-input"
   const classNames: string[] = [defaultClassName]
   switch (name) {
@@ -10,6 +10,10 @@ export const assignClassName = (name: InputNames): string => {
     case InputNames.CATEGORY_ID:
     case InputNames.COORDINATOR_ID:
       classNames.push(defaultClassName + "--select")
+      
+      if (values && !values[name]) {
+        classNames.push(defaultClassName + "--placeholder")
+      }
       break
     case InputNames.PAID_EVENT:
       classNames.push(defaultClassName + "--radio")

@@ -2,7 +2,7 @@
 
 .FormInput {
   display: grid;
-  grid-template-columns: 2fr 9fr 5fr;
+  grid-template-columns: 2fr 8fr 2fr;
   grid-gap: 8px;
   &--required {
     color: $required_color;
@@ -10,23 +10,25 @@
   &-label {
     text-transform: uppercase;
     display: grid;
-    align-content: center;
     font-size: 0.9rem;
     color: $weak_blue;
     grid-auto-flow: column;
     justify-content: left;
-    font-weight:500; 
+    font-weight: 500;
     letter-spacing: -0.01rem;
-
-
+    padding: 10px 0 0 0;
   }
-  &--firstRow {
+  // TODO: remobe if not needed in future( also usage)
+  &--column {
+  }
+  &--firstColumn {
     grid-column: 1;
   }
-  &--secondRow {
+  &--secondColumn {
+    align-self: center;
     grid-column: 2;
   }
-  &--thirdRow {
+  &--thirdColumn {
     grid-column: 3;
   }
   &-descriptionRow {
@@ -35,6 +37,7 @@
     justify-content: space-between;
     color: $placeholder_color;
     font-size: 0.7rem;
+    font-style: italic;
   }
   &-input {
     height: 41px;
@@ -42,10 +45,53 @@
     border: 2px solid $main_border_color;
     border-radius: 3px;
     padding: 5px 10px 5px 10px;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    &:focus {
+      outline: none;
+      border: 1px solid $main_blue;
+    }
     &::placeholder {
       color: $placeholder_color;
       padding: 5px 10px 5px 10px;
     }
+    &--textarea {
+      resize: none;
+      height: 162px;
+    }
+    &--select {
+      &:-moz-focusring {
+        color: placeholder_color;
+        text-shadow: none;
+        outline: none;
+    }
+      color: black;
+      background-color: #fff;
+      & option {
+        color: black;
+        background-color: $main_border_color;
+      }
+      & option[value=""][disabled] > * {
+        display: none;
+        color: $placeholder_color;
+      }
+    }
+    &--placeholder {
+      color: $placeholder_color;
+    }
+    &--radio {
+      height: 20px;
+      width: 40px;
+    }
+  }
+  &--multiElementRow {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+  }
+  &--description{
+    font-size: 0.8rem;
+    align-items: center;
+    display: grid;
   }
 }

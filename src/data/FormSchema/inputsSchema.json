@@ -19,7 +19,7 @@
     {
       "label": "category",
       "name": "category_id",
-      "placeholder": "Select category (skills, interests, location",
+      "placeholder": "Select category (skills, interests, location)",
       "options": [
         {
           "id": 0,
@@ -60,6 +60,10 @@
         {
           "id": 9,
           "name": "Dance"
+        },
+        {
+          "id": 10,
+          "name": "Other"
         }
       ]
     },
@@ -67,17 +71,18 @@
       "label": "payment",
       "name": "paid_event",
       "type": "radio",
+      "multiElement": true,
       "elements": [
         {
           "type": "radio",
           "name": "paid_event",
-          "label": "Free event",
+          "information": "Free event",
           "value": false
         },
         {
           "type": "radio",
           "name": "paid_event",
-          "label": "Paid event",
+          "information": "Paid event",
           "value": true
         }
       ]

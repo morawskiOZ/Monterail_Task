@@ -15,7 +15,7 @@ $header_height: 20px;
     height: calc(100% - #{$header_height});
     color: $white_opacity;
     display: grid;
-    grid-template-columns: 1fr minmax(auto, 1100px) 1fr;
+    grid-template-columns: 1fr minmax(auto, 800px) 1fr;
     &--text {
       grid-column: 2;
       align-self: center;
