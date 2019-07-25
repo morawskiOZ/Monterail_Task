@@ -4,9 +4,10 @@ import {
   getStateFromTranslatedName
 } from "./translateName"
 
-export const assignClassName = (name: InputNames, values?: any): string => {
+export const assignClassName = (name: InputNames, values?: any, meta?: any): string => {
   const defaultClassName = "FormInput-input"
   const classNames: string[] = [defaultClassName]
+  meta.error && meta.touched && classNames.push(defaultClassName + "--error")
   switch (name) {
     case InputNames.DESCRIPTION:
       classNames.push(defaultClassName + "--textarea")

@@ -21,7 +21,7 @@ const MainForm = () => {
   return (
     // TODO: maybe the div is redundant
 
-    <div className="MainForm">
+    <div className="MainForm App-content--middle">
       <Form
         mutators={{
           resetFee: (args, state, utils) => {
@@ -64,6 +64,7 @@ const MainForm = () => {
                   options={input.options}
                   values={values as FormValues}
                   defaultValue={input.defaultValue}
+                  required={input.required}
                 />
               ))}
             </FormBlock>

@@ -8,6 +8,7 @@ $input_height: 41px;
     color: $required_color;
   }
   &-label {
+    cursor: default;
     text-transform: uppercase;
     display: grid;
     font-size: 0.9rem;
@@ -29,6 +30,7 @@ $input_height: 41px;
     grid-column: 2;
   }
   &--thirdColumn {
+    display: grid;
     grid-column: 3;
   }
   &-descriptionRow {
@@ -47,6 +49,9 @@ $input_height: 41px;
     padding: 5px 10px 5px 10px;
     font-size: 1rem;
     letter-spacing: 0.05rem;
+    &--error {
+      border: 2px solid $required_color;
+    }
     &:focus {
       outline: none;
       border: 1px solid $main_blue;
@@ -99,7 +104,10 @@ $input_height: 41px;
     grid-auto-columns: max-content;
     grid-gap: 4px;
     align-items: center;
-
+    &--bigger {
+      padding: 1px;
+      height: calc(#{$input_height} + 6px)
+    }
   }
   &-description {
     font-size: 0.8rem;
@@ -107,6 +115,32 @@ $input_height: 41px;
     display: grid;
     &--bigGap {
       margin-left: 10px;
+    }
+  }
+  &-error {
+    z-index: 2;
+    color: $white;
+    background-color: $required_color;
+    font-size: 0.7rem;
+    letter-spacing: 0.05rem;
+    padding: 4px;
+    align-self: center;
+    justify-self: left;
+    border-radius: 4px;
+    position: relative;
+    &--arrow {
+      &::before {
+        z-index: -1;
+        content: "";
+        position: absolute;
+        display: block;
+        width: 0px;
+        height: 0;
+        border: 6px solid $required_color;
+        transform: rotate(45deg);
+        left: -3px;
+        bottom: calc(50% - 6px);
+      }
     }
   }
 }

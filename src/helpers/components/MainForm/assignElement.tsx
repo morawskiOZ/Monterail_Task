@@ -4,7 +4,7 @@ import { InputNames } from "ts/FormInput/FormInput_enum"
 import { assignClassName } from "./assignClassName"
 import { modifyValue } from "./modifyValue"
 
-export const assignElement = (props, input, values?) => {
+export const assignElement = (props, input, values?, meta?) => {
   const {
     name,
     label,
@@ -19,7 +19,7 @@ export const assignElement = (props, input, values?) => {
     multiElement,
     information
   } = props
-  const className = assignClassName(name, values)
+  const className = assignClassName(name, values, meta)
   switch (name) {
     // TODO: Assign element by their specific type(not input type) not name to make it more re-usable and generic
     case InputNames.DESCRIPTION:

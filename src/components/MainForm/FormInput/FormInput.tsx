@@ -1,7 +1,7 @@
 import { assignElement } from "helpers/components/MainForm/assignElement"
 import { assignValidators } from "helpers/components/MainForm/assignValidator"
 import { composeValidators } from "helpers/components/MainForm/formValidation"
-import { generateExtraFields } from "helpers/components/MainForm/generateEkstraFields"
+import { generateExtraFields } from "helpers/components/MainForm/generateExtraFields"
 import { parseInput } from "helpers/components/MainForm/inputParser"
 import React, { ReactElement } from "react"
 import { Field } from "react-final-form"
@@ -41,7 +41,7 @@ const FormInput = ({ ...props }: FormInputProps): ReactElement => {
         defaultValue={defaultValue}
       >
         {({ input, meta }) => {
-          const inputToRender = assignElement(props, input, values)
+          const inputToRender = assignElement(props, input, values, meta)
           const extraFields = multiFields
             ? generateExtraFields(multiFields, values, form)
             : []
@@ -76,8 +76,8 @@ const FormInput = ({ ...props }: FormInputProps): ReactElement => {
                 )}
               </div>
               {meta.error && meta.touched && (
-                <div className=" FormInput--column FormInput--thirdColumn">
-                  <span>{meta.error}</span>
+                <div className="FormInput--column FormInput--thirdColumn">
+                  <div className="FormInput-error FormInput-error--arrow" >{meta.error}</div>
                 </div>
               )}
             </div>

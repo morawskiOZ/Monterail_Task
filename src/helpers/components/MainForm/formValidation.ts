@@ -1,7 +1,7 @@
 import { transformDate } from "components/MainForm/FormInput/DateComponent/DateComponent";
 
 export const required = value => (value ? undefined : "Field Required")
-export const allRequired = value => (value ? undefined : "All time and date fields Required")
+export const allRequired = value => (value ? undefined : "All time and date fields required")
 
 
 export const mustBeNumber = value =>

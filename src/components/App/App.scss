@@ -8,4 +8,15 @@
 .App {
   box-sizing: border-box;
   background-color: $main_background_color;
+  display: grid;
+  &-content {
+    grid-template-columns: minmax(20px, 1fr) minmax(auto, 900px) minmax(20px, 1fr);
+    &--entireRow {
+      grid-column: 1 / -1;
+    }
+    &--middle {
+      grid-column: 2;
+    }
+  }
 }
+
