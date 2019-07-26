@@ -1,4 +1,4 @@
-import { required, checkLength, checkDate, allRequired } from "./formValidation"
+import { required, checkLength, checkDate, allRequired } from "./formValidators"
 import { FieldValidator } from "final-form"
 import { InputNames } from "ts/FormInput/FormInput_enum";
 
@@ -12,7 +12,7 @@ export const assignValidators = (name: InputNames, values): FieldValidator<any>[
       break
     case InputNames.DESCRIPTION:
       validators.push(required as never)
-      validators.push(checkLength(5) as never)
+      validators.push(checkLength(140) as never)
       break
     case InputNames.DATE:
       validators.push(allRequired as never)

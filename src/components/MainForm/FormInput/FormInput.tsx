@@ -1,6 +1,6 @@
 import { assignElement } from "helpers/components/MainForm/assignElement"
 import { assignValidators } from "helpers/components/MainForm/assignValidator"
-import { composeValidators } from "helpers/components/MainForm/formValidation"
+import { composeValidators } from "helpers/components/MainForm/formValidators"
 import { generateExtraFields } from "helpers/components/MainForm/generateExtraFields"
 import { parseInput } from "helpers/components/MainForm/inputParser"
 import React, { ReactElement } from "react"

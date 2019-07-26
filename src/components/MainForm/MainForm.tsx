@@ -1,5 +1,5 @@
 import { assignValidators } from "helpers/components/MainForm/assignValidator"
-import { composeValidators } from "helpers/components/MainForm/formValidation"
+import { composeValidators } from "helpers/components/MainForm/formValidators"
 import { omitNill } from "helpers/components/MainForm/modifyValue"
 import React from "react"
 import { Field, Form } from "react-final-form"
@@ -90,14 +90,15 @@ const MainForm = () => {
                 />
               ))}
             </FormBlock>
-            <div className="buttons">
-              <button type="submit" disabled={submitting}>
-                Submit
+            <div className="MainForm-buttonContainer">
+              <button type="submit" disabled={submitting} className="MainForm-button MainForm-button--submit">
+                Publish Event
               </button>
               <button
-                type="button"
+                type="reset"
                 onClick={form.reset}
                 disabled={submitting || pristine}
+                className="MainForm-button MainForm-button--reset"
               >
                 Reset
               </button>

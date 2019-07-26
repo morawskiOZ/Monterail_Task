@@ -10,9 +10,11 @@ export const modifyValue = (name: InputNames, value: any) => {
 }
 
 export const omitNill = (values) => {
-  for (var key in values) {
-    if (values[key] === null) {
-      delete values[key]
+  const newValues = values
+  for (var key in newValues) {
+    if (newValues[key] === null) {
+      delete newValues[key]
     }
   }
+  return newValues
 }

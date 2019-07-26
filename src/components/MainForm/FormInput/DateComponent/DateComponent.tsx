@@ -1,6 +1,5 @@
 import { timeConvertor } from "helpers/components/MainForm/timeConvertor"
 import React, { ReactElement, useState } from "react"
-import "./DateComponent.scss"
 import TimeInput from "./TimeInput/TimeInput"
 
 // TODO: add types everywhere

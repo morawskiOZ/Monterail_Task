@@ -3,7 +3,7 @@ import { Field } from "react-final-form"
 import { FormInputProps } from "ts/FormInput/FormInputs_interface"
 import { assignElement } from "./assignElement"
 import { assignValidators } from "./assignValidator"
-import { composeValidators } from "./formValidation"
+import { composeValidators } from "./formValidators"
 import { parseInput } from "./inputParser"
 import { FormValues } from "ts/Form/Form_interfaces";
 
