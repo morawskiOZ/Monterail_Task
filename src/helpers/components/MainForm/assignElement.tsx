@@ -10,13 +10,9 @@ export const assignElement = (props, input, values?, meta?) => {
     label,
     type,
     placeholder,
-    description,
-    counter,
-    maxLength,
     options,
     elements,
     condition,
-    multiElement,
     information
   } = props
   const className = assignClassName(name, values, meta)
@@ -67,7 +63,7 @@ export const assignElement = (props, input, values?, meta?) => {
           <option value="" disabled>
             Others
           </option>
-          {options.map((option: SelectOption) => {
+          {restOption.map((option: SelectOption) => {
             return (
               <option value={option.id} key={option.id} id={`${option.id}`}>
                 {option.name} {option.lastname}
@@ -77,15 +73,14 @@ export const assignElement = (props, input, values?, meta?) => {
         </select>
       )
     case InputNames.PAID_EVENT:
-      return elements.map(element => {
+      return elements.map((element, index) => {
         return (
-          <>
+          <React.Fragment key={index}>
             <input
               {...input}
               type={element.type}
               name={element.name}
               value={element.value}
-              key={element.label}
               checked={element.value === values[name]}
               className={className}
             />
@@ -94,7 +89,7 @@ export const assignElement = (props, input, values?, meta?) => {
                 {element.information}
               </span>
             )}
-          </>
+          </React.Fragment>
         )
       })
     case InputNames.DURATION:

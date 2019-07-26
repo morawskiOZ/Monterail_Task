@@ -78,6 +78,7 @@ const MainForm = () => {
             </FormBlock>
             <FormBlock title={"When"}>
               <Field
+                key={"date"}
                 name={InputNames.DATE}
                 label="Starts on "
                 component={DateComponent}

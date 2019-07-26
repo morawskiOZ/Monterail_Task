@@ -1,6 +1,4 @@
 import { InputNames } from "ts/FormInput/FormInput_enum"
-import { FormState } from "final-form"
-import { FormValues } from "ts/Form/Form_interfaces"
 
 export const translateNameToState = (name: InputNames) => {
   switch (name) {
@@ -21,6 +19,6 @@ export const getStateFromTranslatedName = (
     if (prev) {
       return prev[curr]
     }
-    return
+    return undefined
   }, values)
 }

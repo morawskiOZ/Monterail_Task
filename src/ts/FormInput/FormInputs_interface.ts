@@ -24,4 +24,5 @@ export interface FormInputProps {
   multiFields?: any[]
   form?: any
   defaultValue?: any
+  key?: string
 }

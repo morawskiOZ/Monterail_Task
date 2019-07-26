@@ -12,22 +12,11 @@ export const generateExtraFields = (
   values?: FormValues,
   form?
 ): any => {
-  const a = multiFields.map(fieldProps => {
+  return multiFields.map(fieldProps => {
     const {
       name,
-      label,
       type,
-      placeholder,
-      description,
-      counter,
-      maxLength,
-      options,
-      elements,
       condition,
-      required,
-      multiElement,
-      information,
-      multiFields
     } = fieldProps
 
     useEffect(() => {
@@ -47,6 +36,7 @@ export const generateExtraFields = (
         validate={composeValidators(...assignValidators(name, values))}
         parse={parseInput}
         type={type}
+        key={"Field" + name}
       >
         {({ input, meta }) => {
           const inputToRender = assignElement(fieldProps, input, values)
@@ -64,5 +54,4 @@ export const generateExtraFields = (
       </Field>
     )
   })
-  return a
 }

@@ -13,20 +13,16 @@ const FormInput = ({ ...props }: FormInputProps): ReactElement => {
     name,
     label,
     type,
-    placeholder,
     values,
     description,
     counter,
     maxLength,
-    options,
-    elements,
     condition,
     required,
     multiElement,
-    information,
     multiFields,
     form,
-    defaultValue
+    defaultValue,
   } = props
 
   if (condition && !values[condition]) {
@@ -39,6 +35,7 @@ const FormInput = ({ ...props }: FormInputProps): ReactElement => {
         parse={parseInput}
         type={type}
         defaultValue={defaultValue}
+        key={"Field"+name}
       >
         {({ input, meta }) => {
           const inputToRender = assignElement(props, input, values, meta)

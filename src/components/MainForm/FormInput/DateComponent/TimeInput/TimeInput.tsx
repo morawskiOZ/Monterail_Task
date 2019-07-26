@@ -40,7 +40,7 @@ class TimeInput extends Component<any, any> {
   }
 
   isValid(val) {
-    const regexp = /^\d{0,2}?\:?\d{0,2}$/
+    const regexp = /^\d{0,2}?:?\d{0,2}$/
 
     const [hoursStr, minutesStr] = val.split(":")
 
