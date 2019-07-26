@@ -1,7 +1,7 @@
 import { transformDate } from "components/MainForm/FormInput/DateComponent/DateComponent";
 
 export const required = value => (value ? undefined : "Field Required")
-export const allRequired = value => (value ? undefined : "All time and date fields Required")
+export const allRequired = value => (value ? undefined : "All time and date fields required")
 
 
 export const mustBeNumber = value =>
@@ -29,7 +29,7 @@ export const checkDate = (value: string) => {
 
 export const validateEmail = (email: string) => {
   // RFC2822 email validator
-  const reg = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
+  const reg = /[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
   const test = reg.test(email)
   return test ? undefined : "E-mail is not in a valid format"
 }

@@ -1,0 +1,144 @@
+@import "../../../style/variables";
+$input_height: 41px;
+.FormInput {
+  display: grid;
+  grid-template-columns: 2fr 8fr 2fr;
+  grid-gap: 8px;
+  &--required {
+    color: $required_color;
+  }
+  &-label {
+    cursor: default;
+    text-transform: uppercase;
+    display: grid;
+    font-size: 0.9rem;
+    color: $weak_blue;
+    grid-auto-flow: column;
+    justify-content: left;
+    font-weight: 500;
+    letter-spacing: -0.01rem;
+    padding: 10px 0 0 0;
+  }
+  &--firstColumn {
+    grid-column: 1;
+  }
+  &--secondColumn {
+    align-self: center;
+    grid-column: 2;
+  }
+  &--thirdColumn {
+    display: grid;
+    grid-column: 3;
+  }
+  &-descriptionRow {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    color: $placeholder_color;
+    font-size: 0.7rem;
+    font-style: italic;
+  }
+  &-input {
+    height: $input_height;
+    width: 100%;
+    border: 2px solid $main_border_color;
+    border-radius: 3px;
+    padding: 5px 10px 5px 10px;
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    &--error {
+      border: 2px solid $required_color;
+    }
+    &:focus {
+      outline: none;
+      border: 1px solid $main_blue;
+    }
+    &::placeholder {
+      color: $placeholder_color;
+      padding: 5px 10px 5px 10px;
+    }
+    &--textarea {
+      resize: none;
+      height: 162px;
+    }
+    &--select {
+      &:-moz-focusring {
+        color: $placeholder_color;
+        text-shadow: none;
+        outline: none;
+      }
+      color: black;
+      background-color: #fff;
+      & option {
+        color: black;
+        background-color: $main_border_color;
+      }
+      & option[value=""][disabled] > * {
+        display: none;
+        color: $placeholder_color;
+      }
+    }
+    &--placeholder {
+      color: $placeholder_color;
+    }
+    &--radio {
+      height: 20px;
+      width: 40px;
+    }
+    &--small {
+      padding: 5px;
+      width: 100px;
+    }
+    &--verySmall {
+      padding: 5px;
+      width: 65px;
+      text-align: center;
+    }
+  }
+  &-multiElementRow {
+    height: $input_height;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    grid-gap: 4px;
+    align-items: center;
+    &--bigger {
+      padding: 1px;
+      height: calc(#{$input_height} + 6px)
+    }
+  }
+  &-description {
+    font-size: 0.8rem;
+    align-items: center;
+    display: grid;
+    &--bigGap {
+      margin-left: 10px;
+    }
+  }
+  &-error {
+    z-index: 2;
+    color: $white;
+    background-color: $required_color;
+    font-size: 0.7rem;
+    letter-spacing: 0.05rem;
+    padding: 4px;
+    align-self: center;
+    justify-self: left;
+    border-radius: 4px;
+    position: relative;
+    &--arrow {
+      &::before {
+        z-index: -1;
+        content: "";
+        position: absolute;
+        display: block;
+        width: 0px;
+        height: 0;
+        border: 6px solid $required_color;
+        transform: rotate(45deg);
+        left: -3px;
+        bottom: calc(50% - 6px);
+      }
+    }
+  }
+}

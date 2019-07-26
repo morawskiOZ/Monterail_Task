@@ -7,7 +7,8 @@ export enum InputNames {
   COORDINATOR_EMAIL = "coordinator.email",
   COORDINATOR_ID = "coordinator.id",
   DURATION = "duration",
-  DATE = "date"
+  DATE = "date",
+  REWARD = "reward"
 }
 export enum InputTypes {
   TEXT = "text",

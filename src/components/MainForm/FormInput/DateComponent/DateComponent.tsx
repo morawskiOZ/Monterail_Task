@@ -1,9 +1,9 @@
 import { timeConvertor } from "helpers/components/MainForm/timeConvertor"
-import React, { useState, ReactElement } from "react"
-import "./DateComponent.scss"
+import React, { ReactElement, useState } from "react"
 import TimeInput from "./TimeInput/TimeInput"
 
 // TODO: add types everywhere
+// TODO: make this component more generic, accepting styles from outside for example, more generic props
 
 export enum TimeFormat {
   AM = "AM",
@@ -21,7 +21,7 @@ export const DateComponent = ({
   const [time, setTime] = useState<string>("")
   const [format, setFormat] = useState<TimeFormat>(TimeFormat.AM)
 
-  const handleDateChange = ({target: {value}}) => {
+  const handleDateChange = ({ target: { value } }) => {
     setDay(value)
     if (time) {
       const date = `${value}T${timeConvertor(time, format)}`
@@ -35,7 +35,7 @@ export const DateComponent = ({
       input.onChange(date)
     }
   }
-  const handleFormatChange = ({target: {value}}) => {
+  const handleFormatChange = ({ target: { value } }) => {
     setFormat(value)
     if (day && time) {
       input.onChange(`${day}T${timeConvertor(time, value)}`)
@@ -43,39 +43,55 @@ export const DateComponent = ({
   }
 
   return (
-    <div tabIndex={0} className={""}>
-      <label>{label}</label>
-      <input
-        {...input}
-        type="date"
-        onChange={handleDateChange}
-        value={day}
-        className="DateComponent-dateInput"
-      />
-      <span>at</span>
-      <TimeInput
-        onTimeChange={handleTimeChange}
-        placeholder={"--:--"}
-        input={input}
-      />
-      <input
-        {...input}
-        type="radio"
-        name="format"
-        value={TimeFormat.AM}
-        checked={format === TimeFormat.AM}
-        onChange={handleFormatChange}
-        required
-      />
-      <input
-        {...input}
-        type="radio"
-        name="format"
-        value={TimeFormat.PM}
-        checked={format === TimeFormat.PM}
-        onChange={handleFormatChange}
-      />
-      {error && touched && <span>{error}</span>}
+    <div className="FormInput">
+      <label className="FormInput--firstColumn FormInput-label">
+        {label} <span className="FormInput--required">&nbsp;*</span>
+      </label>
+
+      <div className="FormInput--secondColumn">
+        <div className={`FormInput-multiElementRow FormInput-multiElementRow--bigger ${error && touched ? "FormInput-input--error" : ""}`}>
+          <input
+            {...input}
+            type="date"
+            onChange={handleDateChange}
+            value={day}
+            className={`FormInput-input ${
+              day ? "" : "FormInput-input--placeholder"
+            }`}
+          />
+          <span>at</span>
+          <TimeInput
+            onTimeChange={handleTimeChange}
+            placeholder={"--:--"}
+            input={input}
+            className={"FormInput-input FormInput-input--verySmall"}
+          />
+          <input
+            {...input}
+            type="radio"
+            name="format"
+            value={TimeFormat.AM}
+            checked={format === TimeFormat.AM}
+            onChange={handleFormatChange}
+            required
+            className="FormInput-input FormInput-input--radio"
+          />
+          <span className="FormInput-description"> AM </span>
+          <input
+            {...input}
+            type="radio"
+            name="format"
+            value={TimeFormat.PM}
+            checked={format === TimeFormat.PM}
+            onChange={handleFormatChange}
+            className="FormInput-input FormInput-input--radio"
+          />
+          <span className="FormInput-description"> PM</span>
+        </div>
+      </div>
+      <div className="FormInput--thirdColumn">
+        {error && touched && <div className="FormInput-error FormInput-error--arrow">{error}</div>}
+      </div>
     </div>
   )
 }
