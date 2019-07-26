@@ -8,6 +8,7 @@ $input_height: 41px;
     color: $required_color;
   }
   &-label {
+    min-width: 110px;
     cursor: default;
     text-transform: uppercase;
     display: grid;
@@ -44,7 +45,7 @@ $input_height: 41px;
     border: 2px solid $main_border_color;
     border-radius: 3px;
     padding: 5px 10px 5px 10px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     letter-spacing: 0.05rem;
     &--error {
       border: 2px solid $required_color;
@@ -83,16 +84,18 @@ $input_height: 41px;
     }
     &--radio {
       height: 20px;
-      width: 40px;
+      width: 20px;
     }
     &--small {
-      padding: 5px;
+      padding: 10px;
       width: 100px;
     }
     &--verySmall {
-      padding: 5px;
+      padding: 2px;
       width: 65px;
       text-align: center;
+      margin: 0 10px 0 10px;
+
     }
   }
   &-multiElementRow {
@@ -104,10 +107,11 @@ $input_height: 41px;
     align-items: center;
     &--bigger {
       padding: 1px;
-      height: calc(#{$input_height} + 6px)
+      height: calc(#{$input_height} + 6px);
     }
   }
   &-description {
+    margin: 0 10px 0 10px;
     font-size: 0.8rem;
     align-items: center;
     display: grid;
@@ -145,5 +149,105 @@ $input_height: 41px;
     display: grid;
     grid-gap: 5px;
     margin-left: 5px;
+  }
+}
+@media (max-width: 750px) {
+  .FormInput {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    grid-gap: 8px;
+    &--firstColumn {
+      grid-row: 1;
+      grid-column: 1;
+    }
+    &--secondColumn {
+      align-self: center;
+      grid-row: 2;
+      grid-column: 1;
+    }
+    &--thirdColumn {
+      display: grid;
+      grid-row: 3;
+      grid-column: 1;
+      justify-content: center;
+    }
+    &-error {
+      &--arrow {
+        &::before {
+          left: calc(50% - 6px);
+          top: -3px;
+        }
+      }
+    }
+    &-multiElementRow {
+      min-height: 55px;
+
+      grid-auto-flow: column;
+      grid-auto-columns: max-content;
+      grid-gap: 3px;
+      align-items: center;
+    }
+    &--inlineError {
+      min-height: 55px;
+      justify-content: center;
+      align-content: center;
+    }
+  }
+}
+@media (max-width: 550px) {
+  .FormInput {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    grid-gap: 8px;
+    &--firstColumn {
+      grid-row: 1;
+      grid-column: 1;
+    }
+    &--secondColumn {
+      align-self: center;
+      grid-row: 2;
+      grid-column: 1;
+    }
+    &--thirdColumn {
+      display: grid;
+      grid-row: 3;
+      grid-column: 1;
+      justify-content: center;
+    }
+
+    &-multiElementRow {
+      &--veryLong {
+        display: flex;
+        flex-wrap: wrap;
+        height: 110px;
+        justify-content: left;
+        align-content: space-between;
+        & .FormInput-input--date {
+          width: 100%;
+          margin-bottom: 2px;
+        }
+      }
+    }
+    &-input {
+      font-size: 0.7rem;
+      &--small {
+        width: 65px;
+        padding: 0;
+      }
+    }
+    &-description {
+      margin: 0 5px 0 5px;
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .FormInput {
+    &-description {
+      font-size: 0.7rem;
+
+    }
   }
 }
