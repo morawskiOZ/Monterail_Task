@@ -1,16 +1,17 @@
-import "./FormBlock.scss"
-
 import React, { ReactElement } from "react"
+import "./FormBlock.scss"
 
 const FormBlock = ({
   children,
-  title
+  title,
+  className
 }: {
   children: any
   title: string
+  className?: string
 }): ReactElement => {
   return (
-    <div className="FormBlock">
+    <div className={`FormBlock ${className}`}>
       <h4 className="FormBlock-title">
         {title}
         <div className="FormBlock-line" />

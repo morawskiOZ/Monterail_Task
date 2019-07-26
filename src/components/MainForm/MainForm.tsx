@@ -1,7 +1,7 @@
 import { assignValidators } from "helpers/components/MainForm/assignValidator"
 import { composeValidators } from "helpers/components/MainForm/formValidators"
 import { omitNill } from "helpers/components/MainForm/modifyValue"
-import React from "react"
+import React, { useState } from "react"
 import { Field, Form } from "react-final-form"
 import { InputNames, InputTypes } from "ts/FormInput/FormInput_enum"
 import * as inputsSchema from "../../data/FormSchema/inputs.json"
@@ -11,16 +11,24 @@ import FormInput from "./FormInput/FormInput"
 import "./MainForm.scss"
 import { FormValues } from "ts/Form/Form_interfaces.js"
 
-// TODO: maybe add content styling to APP max width and color to body
 const MainForm = () => {
   const onSubmit = (values: FormValues) => {
     const valuesOmitNil = omitNill(values)
     console.log(valuesOmitNil)
+    setSubmitted(true)
+  }
+
+  const [submitted, setSubmitted] = useState<boolean>(false)
+
+  if (submitted) {
+    return (
+      <FormBlock title="Success" className="App-content--middle FormBlock--success" >
+        <span className="FormBlock-description">Event has been created. </span>
+      </FormBlock>
+    )
   }
 
   return (
-    // TODO: maybe the div is redundant
-
     <div className="MainForm App-content--middle">
       <Form
         mutators={{
@@ -91,7 +99,11 @@ const MainForm = () => {
               ))}
             </FormBlock>
             <div className="MainForm-buttonContainer">
-              <button type="submit" disabled={submitting} className="MainForm-button MainForm-button--submit">
+              <button
+                type="submit"
+                disabled={submitting}
+                className="MainForm-button MainForm-button--submit"
+              >
                 Publish Event
               </button>
               <button

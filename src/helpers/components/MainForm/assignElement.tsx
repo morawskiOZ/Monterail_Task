@@ -90,6 +90,7 @@ export const assignElement = (props, input, values?, meta?) => {
               className={className}
             />
             {element.information && (
+    // TODO: maybe the div is redundant
               <span className="FormInput-description">
                 {element.information}
               </span>
