@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header/> renders and matches snapshots 1`] = `
+<header
+  className="Header App-content--entireRow"
+>
+  <div
+    className="Header-Stripe"
+  />
+  <div
+    className="Header-Title"
+  >
+    <span
+      className="Header-Title--text"
+    >
+       New event
+    </span>
+  </div>
+</header>
+`;

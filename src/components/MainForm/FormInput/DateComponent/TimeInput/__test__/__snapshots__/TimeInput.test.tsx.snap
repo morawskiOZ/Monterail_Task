@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TimeInput/> renders and matches snapshots 1`] = `
+<input
+  onChange={[Function]}
+  onFocus={[Function]}
+  type="tel"
+  value=""
+/>
+`;
