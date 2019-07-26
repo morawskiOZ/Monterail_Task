@@ -116,7 +116,6 @@ const MainForm = () => {
                 Reset
               </button>
             </div>
-            <pre>{JSON.stringify(values, null, 2)}</pre>
           </form>
         )}
       />
