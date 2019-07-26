@@ -1,10 +1,14 @@
 # Monterail Task
 Project written in TypeScript using React library. Styling is done with SCSS and Bem terminology. 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## To see live
+
+Simply go to https://monterail-morawski.herokuapp.com/. 
 
 ## To run locally
 
-You must be in the project directory to run the comands.
+You must be in the project directory to run the commands.
 
 #### Setup
 ```
