@@ -1,4 +1,4 @@
-import { required, checkLength, checkDate, allRequired } from "./formValidators"
+import { required, checkLength, checkDate, allRequired, validateEmail } from "./formValidators"
 import { FieldValidator } from "final-form"
 import { InputNames } from "ts/FormInput/FormInput_enum";
 
@@ -24,6 +24,9 @@ export const assignValidators = (name: InputNames, values): FieldValidator<any>[
     case InputNames.EVENT_FEE:
       values.paid_event && validators.push(required as never)
       break
+      case InputNames.COORDINATOR_EMAIL:
+        validators.push(validateEmail as never)
+        break
   }
   return validators
 }

@@ -19,9 +19,6 @@ $input_height: 41px;
     letter-spacing: -0.01rem;
     padding: 10px 0 0 0;
   }
-  // TODO: remobe if not needed in future( also usage)
-  &--column {
-  }
   &--firstColumn {
     grid-column: 1;
   }
@@ -66,7 +63,7 @@ $input_height: 41px;
     }
     &--select {
       &:-moz-focusring {
-        color: placeholder_color;
+        color: $placeholder_color;
         text-shadow: none;
         outline: none;
       }

@@ -44,11 +44,11 @@ export const DateComponent = ({
 
   return (
     <div className="FormInput">
-      <label className="FormInput--column FormInput--firstColumn FormInput-label">
+      <label className="FormInput--firstColumn FormInput-label">
         {label} <span className="FormInput--required">&nbsp;*</span>
       </label>
 
-      <div className="FormInput--column FormInput--secondColumn">
+      <div className="FormInput--secondColumn">
         <div className={`FormInput-multiElementRow FormInput-multiElementRow--bigger ${error && touched ? "FormInput-input--error" : ""}`}>
           <input
             {...input}
@@ -89,7 +89,7 @@ export const DateComponent = ({
           <span className="FormInput-description"> PM</span>
         </div>
       </div>
-      <div className="FormInput--column FormInput--thirdColumn">
+      <div className="FormInput--thirdColumn">
         {error && touched && <div className="FormInput-error FormInput-error--arrow">{error}</div>}
       </div>
     </div>

@@ -49,14 +49,14 @@ const FormInput = ({ ...props }: FormInputProps): ReactElement => {
           return (
             <div className="FormInput">
               {label && (
-                <label className="FormInput--column FormInput--firstColumn FormInput-label">
+                <label className="FormInput--firstColumn FormInput-label">
                   {label}
                   {required && (
                     <span className="FormInput--required">&nbsp;*</span>
                   )}
                 </label>
               )}
-              <div className="FormInput--column FormInput--secondColumn">
+              <div className="FormInput--secondColumn">
                 <div
                   className={multiElement ? "FormInput-multiElementRow" : ""}
                 >
@@ -76,7 +76,7 @@ const FormInput = ({ ...props }: FormInputProps): ReactElement => {
                 )}
               </div>
               {meta.error && meta.touched && (
-                <div className="FormInput--column FormInput--thirdColumn">
+                <div className="FormInput--thirdColumn">
                   <div className="FormInput-error FormInput-error--arrow" >{meta.error}</div>
                 </div>
               )}

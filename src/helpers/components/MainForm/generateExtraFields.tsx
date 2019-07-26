@@ -54,7 +54,7 @@ export const generateExtraFields = (
             <div className="">
               {inputToRender}
               {meta.error && meta.touched && (
-                <div className=" FormInput--column FormInput--thirdColumn">
+                <div className="FormInput--thirdColumn">
                   <span>{meta.error}</span>
                 </div>
               )}
