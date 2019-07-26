@@ -49,17 +49,21 @@ export const DateComponent = ({
       </label>
 
       <div className="FormInput--secondColumn">
-        <div className={`FormInput-multiElementRow FormInput-multiElementRow--bigger ${error && touched ? "FormInput-input--error" : ""}`}>
+        <div
+          className={`FormInput-multiElementRow FormInput-multiElementRow--veryLong FormInput-multiElementRow--bigger ${
+            error && touched ? "FormInput-input--error" : ""
+          }`}
+        >
           <input
             {...input}
             type="date"
             onChange={handleDateChange}
             value={day}
-            className={`FormInput-input ${
+            className={`FormInput-input FormInput-input--date ${
               day ? "" : "FormInput-input--placeholder"
             }`}
           />
-          <span>at</span>
+          <span className="FormInput-description">at</span>
           <TimeInput
             onTimeChange={handleTimeChange}
             placeholder={"--:--"}
@@ -90,7 +94,9 @@ export const DateComponent = ({
         </div>
       </div>
       <div className="FormInput--thirdColumn">
-        {error && touched && <div className="FormInput-error FormInput-error--arrow">{error}</div>}
+        {error && touched && (
+          <div className="FormInput-error FormInput-error--arrow">{error}</div>
+        )}
       </div>
     </div>
   )

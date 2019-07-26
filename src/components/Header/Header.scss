@@ -24,3 +24,13 @@ $header_height: 20px;
     }
   }
 }
+
+@media (max-width: 750px) {
+  .Header {
+    &-Title {
+      &--text {
+        font-size: 30px;
+      }
+    }
+  }
+}

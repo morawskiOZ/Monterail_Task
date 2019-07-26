@@ -4,14 +4,15 @@
 @import "../../style/main";
 
 
-// TODO: add fonts
-
 .App {
   box-sizing: border-box;
   background-color: $main_background_color;
   display: grid;
   &-content {
-    grid-template-columns: minmax(20px, 1fr) minmax(auto, 800px) minmax(20px, 1fr);
+    grid-template-columns: minmax(20px, 1fr) minmax(auto, 900px) minmax(
+        20px,
+        1fr
+      );
     &--entireRow {
       grid-column: 1 / -1;
     }
@@ -21,3 +22,36 @@
   }
 }
 
+@media (max-width: 750px) {
+  .App {
+    box-sizing: border-box;
+    background-color: $main_background_color;
+    display: grid;
+    &-content {
+      grid-template-columns: minmax(10px, 1fr) auto minmax(10px, 1fr);
+      &--entireRow {
+        grid-column: 1 / -1;
+      }
+      &--middle {
+        grid-column: 2;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .App {
+    box-sizing: border-box;
+    background-color: $main_background_color;
+    display: grid;
+    &-content {
+      grid-template-columns: minmax(5px, 1fr) auto minmax(5px, 1fr);
+      &--entireRow {
+        grid-column: 1 / -1;
+      }
+      &--middle {
+        grid-column: 2;
+      }
+    }
+  }
+}
