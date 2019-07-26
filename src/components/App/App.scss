@@ -3,7 +3,6 @@
 @import "../../style/fonts";
 @import "../../style/main";
 
-
 .App {
   box-sizing: border-box;
   background-color: $main_background_color;
@@ -28,7 +27,7 @@
     background-color: $main_background_color;
     display: grid;
     &-content {
-      grid-template-columns: minmax(10px, 1fr) auto minmax(10px, 1fr);
+      grid-template-columns: minmax(10px, 1fr) minmax(auto, 18fr) minmax(10px, 1fr);
       &--entireRow {
         grid-column: 1 / -1;
       }
@@ -45,7 +44,7 @@
     background-color: $main_background_color;
     display: grid;
     &-content {
-      grid-template-columns: minmax(5px, 1fr) auto minmax(5px, 1fr);
+      grid-template-columns: minmax(5px, 1fr) minmax(18fr, auto) minmax(5px, 1fr);
       &--entireRow {
         grid-column: 1 / -1;
       }

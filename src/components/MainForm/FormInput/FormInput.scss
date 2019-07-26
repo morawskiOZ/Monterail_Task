@@ -238,7 +238,16 @@ $input_height: 41px;
       }
     }
     &-description {
-      margin: 0 10px 0 10px;
+      margin: 0 5px 0 5px;
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .FormInput {
+    &-description {
+      font-size: 0.7rem;
+
     }
   }
 }

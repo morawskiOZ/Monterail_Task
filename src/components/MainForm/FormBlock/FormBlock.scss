@@ -43,6 +43,9 @@
   .FormBlock {
     padding: 15px 25px 15px 25px;
     grid-gap: 10px;
+    &-title {
+      font-size: 1.3rem;
+    }
   }
 }
 

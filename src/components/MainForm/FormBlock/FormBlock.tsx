@@ -11,7 +11,7 @@ const FormBlock = ({
   className?: string
 }): ReactElement => {
   return (
-    <div className={`FormBlock ${className}`}>
+    <div className={`FormBlock ${className ? className : ""}`}>
       <h4 className="FormBlock-title">
         {title}
         <div className="FormBlock-line" />
