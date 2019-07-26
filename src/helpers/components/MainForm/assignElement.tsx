@@ -13,7 +13,8 @@ export const assignElement = (props, input, values?, meta?) => {
     options,
     elements,
     condition,
-    information
+    information,
+    plural
   } = props
   const className = assignClassName(name, values, meta)
   switch (name) {
@@ -94,6 +95,7 @@ export const assignElement = (props, input, values?, meta?) => {
       })
     case InputNames.DURATION:
     case InputNames.REWARD:
+      const modifiedValue = modifyValue(name, input.value)
       return (
         <>
           <input
@@ -102,13 +104,13 @@ export const assignElement = (props, input, values?, meta?) => {
             name={name}
             label={label}
             // condition to avoid showing 0 instead of placeholder
-            value={input.value ? modifyValue(name, input.value) : input.value}
+            value={input.value ? modifiedValue : input.value}
             placeholder={placeholder}
             className={className}
           />
           {information && (
             <span className="FormInput-description FormInput-description--bigGap">
-              {information}
+              {information}{(modifiedValue > 9 && plural) && "s"}
             </span>
           )}
         </>
@@ -117,7 +119,7 @@ export const assignElement = (props, input, values?, meta?) => {
       if (values[condition]) {
         return (
           <input
-            {...input}
+          {...input}
             type={type}
             placeholder={placeholder}
             className={className}

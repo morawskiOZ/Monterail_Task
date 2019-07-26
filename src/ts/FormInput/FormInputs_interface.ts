@@ -25,4 +25,5 @@ export interface FormInputProps {
   form?: any
   defaultValue?: any
   key?: string
+  plural?: boolean
 }
