@@ -9,7 +9,6 @@ describe("<TimeInput/>", () => {
     const wrapper = mount(
         <TimeInput />
     )
-   console.log(wrapper)
     expect(toJSON(wrapper.find("input"))).toMatchSnapshot()
   })
 })

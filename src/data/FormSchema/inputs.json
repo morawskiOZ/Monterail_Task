@@ -88,7 +88,7 @@
       ],
       "multiFields": [
         {
-          "type": "number",
+          "type": "text",
           "name": "event_fee",
           "placeholder": "Fee",
           "information": "$",
@@ -97,7 +97,7 @@
       ]
     },
     {
-      "type": "number",
+      "type": "text",
       "name": "reward",
       "placeholder": "Number",
       "information": "reward points for attendance",
@@ -179,6 +179,7 @@
       "label": "duration",
       "placeholder": "Number",
       "information": "hour",
+      "plural": true,
       "multiElement": true
     }
   ]

@@ -35,7 +35,7 @@ const FormInput = ({ ...props }: FormInputProps): ReactElement => {
         parse={parseInput}
         type={type}
         defaultValue={defaultValue}
-        key={"Field"+name}
+        key={"Field" + name}
       >
         {({ input, meta }) => {
           const inputToRender = assignElement(props, input, values, meta)
@@ -66,7 +66,7 @@ const FormInput = ({ ...props }: FormInputProps): ReactElement => {
                     <span> {description} </span>
                     {counter && maxLength && (
                       <span>
-                        {input.value.length}/ {maxLength}
+                        {input.value.length} / {maxLength}
                       </span>
                     )}
                   </div>
@@ -74,7 +74,9 @@ const FormInput = ({ ...props }: FormInputProps): ReactElement => {
               </div>
               {meta.error && meta.touched && (
                 <div className="FormInput--thirdColumn">
-                  <div className="FormInput-error FormInput-error--arrow" >{meta.error}</div>
+                  <div className="FormInput-error FormInput-error--arrow">
+                    {meta.error}
+                  </div>
                 </div>
               )}
             </div>

@@ -3,14 +3,14 @@ import {
   checkLength,
   checkDate,
   allRequired,
-  validateEmail
+  validateEmail,
+  notRequiredNumber
 } from "./formValidators"
 import { FieldValidator } from "final-form"
 import { InputNames } from "ts/FormInput/FormInput_enum"
 import { FormValues } from "ts/Form/Form_interfaces"
 
 // TODO: add values types
-
 export const assignValidators = (
   name: InputNames,
   values: FormValues
@@ -22,7 +22,7 @@ export const assignValidators = (
       break
     case InputNames.DESCRIPTION:
       validators.push(required as never)
-      validators.push(checkLength(140) as never)
+      validators.push(checkLength(141) as never)
       break
     case InputNames.DATE:
       validators.push(allRequired as never)
@@ -32,10 +32,19 @@ export const assignValidators = (
       validators.push(required as never)
       break
     case InputNames.EVENT_FEE:
-      values.paid_event && validators.push(required as never)
+        validators.push(notRequiredNumber as never)
+      if (values.paid_event) {
+        validators.push(required as never)
+      }
       break
     case InputNames.COORDINATOR_EMAIL:
-        values.coordinator && values.coordinator.email && validators.push(validateEmail as never)
+      values.coordinator &&
+        values.coordinator.email &&
+        validators.push(validateEmail as never)
+      break
+    case InputNames.DURATION:
+    case InputNames.REWARD:
+      validators.push(notRequiredNumber as never)
       break
   }
   return validators

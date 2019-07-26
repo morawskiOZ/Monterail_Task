@@ -1,11 +1,37 @@
-import { transformDate } from "components/MainForm/FormInput/DateComponent/DateComponent";
+import { transformDate } from "components/MainForm/FormInput/DateComponent/DateComponent"
 
 export const required = value => (value ? undefined : "Field Required")
-export const allRequired = value => (value ? undefined : "All time and date fields required")
+export const allRequired = value =>
+  value ? undefined : "All time and date fields required"
 
+export const mustBeNumber = value => {
+  if (isNaN(value)) {
+    return "Must be a number"
+  } else {
+    return undefined
+  }
+}
 
-export const mustBeNumber = value =>
-  isNaN(value) ? "Must be a number" : undefined
+export const requiredNumber = value => {
+  if (value) {
+    if (isNaN(value)) {
+      return "Must be a number"
+    } else {
+      return undefined
+    }
+  } else {
+    return "Field Required"
+  }
+}
+export const notRequiredNumber = value => {
+  if (value) {
+    if (isNaN(value)) {
+      return "Must be a number"
+    } else {
+      return undefined
+    }
+  }
+}
 
 export const minValue = min => value =>
   isNaN(value) || value >= min ? undefined : `Should be greater than ${min}`

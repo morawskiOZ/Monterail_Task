@@ -141,4 +141,9 @@ $input_height: 41px;
       }
     }
   }
+  &--inlineError {
+    display: grid;
+    grid-gap: 5px;
+    margin-left: 5px;
+  }
 }

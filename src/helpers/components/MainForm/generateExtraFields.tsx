@@ -5,7 +5,7 @@ import { assignElement } from "./assignElement"
 import { assignValidators } from "./assignValidator"
 import { composeValidators } from "./formValidators"
 import { parseInput } from "./inputParser"
-import { FormValues } from "ts/Form/Form_interfaces";
+import { FormValues } from "ts/Form/Form_interfaces"
 
 export const generateExtraFields = (
   multiFields: FormInputProps[],
@@ -13,11 +13,7 @@ export const generateExtraFields = (
   form?
 ): any => {
   return multiFields.map(fieldProps => {
-    const {
-      name,
-      type,
-      condition,
-    } = fieldProps
+    const { name, type, condition } = fieldProps
 
     useEffect(() => {
       return () => {
@@ -41,11 +37,13 @@ export const generateExtraFields = (
         {({ input, meta }) => {
           const inputToRender = assignElement(fieldProps, input, values)
           return (
-            <div className="">
+            <div className="FormInput--inlineError">
               {inputToRender}
               {meta.error && meta.touched && (
                 <div className="FormInput--thirdColumn">
-                  <span>{meta.error}</span>
+                  <div className="FormInput-error FormInput-error--arrow">
+                    {meta.error}
+                  </div>
                 </div>
               )}
             </div>

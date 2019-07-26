@@ -82,6 +82,7 @@ const MainForm = () => {
                 name={InputNames.DATE}
                 label="Starts on "
                 component={DateComponent}
+                form={form}
                 validate={composeValidators(
                   ...assignValidators(InputNames.DATE, values)
                 )}
@@ -96,6 +97,7 @@ const MainForm = () => {
                   values={values as FormValues}
                   multiElement={input.multiElement}
                   information={input.information}
+                  plural={input.plural}
                 />
               ))}
             </FormBlock>
