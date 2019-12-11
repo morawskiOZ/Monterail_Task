@@ -1,6 +1,9 @@
 # Monterail Task
+The idea was to create UI for events form. Including some custom inputs and validation.
+
 Project written in TypeScript using React library. Styling is done with SCSS and Bem terminology. 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React-final-form was used for form state managment. 
 
 ## To see live
 
