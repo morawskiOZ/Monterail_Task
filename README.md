@@ -7,7 +7,7 @@ React-final-form was used for form state managment.
 
 ## To see live
 
-Simply go to https://monterail-morawski.herokuapp.com/. 
+Simply go to https://monterail-morawski.herokuapp.com/ - the server has a considerably cold time start so be patient.
 
 ## To run locally
 
